@@ -1,70 +1,79 @@
-
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Github, Linkedin, Twitter, Send } from 'lucide-react';
+import { useState } from "react";
+import { motion } from "framer-motion";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Github,
+  Linkedin,
+  Twitter,
+  Send,
+} from "lucide-react";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
+    name: "",
+    email: "",
+    message: "",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle form submission here
-    console.log('Form submitted:', formData);
+    console.log("Form submitted:", formData);
     // Reset form
-    setFormData({ name: '', email: '', message: '' });
+    setFormData({ name: "", email: "", message: "" });
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   const socialLinks = [
     {
-      name: 'GitHub',
+      name: "GitHub",
       icon: Github,
-      url: 'https://github.com/yourusername',
-      color: 'hover:text-gray-900 dark:hover:text-white'
+      url: "https://github.com/yourusername",
+      color: "hover:text-gray-900 dark:hover:text-white",
     },
     {
-      name: 'LinkedIn',
+      name: "LinkedIn",
       icon: Linkedin,
-      url: 'https://linkedin.com/in/yourusername',
-      color: 'hover:text-blue-600'
+      url: "https://linkedin.com/in/yourusername",
+      color: "hover:text-blue-600",
     },
     {
-      name: 'Twitter',
+      name: "Twitter",
       icon: Twitter,
-      url: 'https://twitter.com/yourusername',
-      color: 'hover:text-blue-400'
-    }
+      url: "https://twitter.com/yourusername",
+      color: "hover:text-blue-400",
+    },
   ];
 
   const contactInfo = [
     {
       icon: Mail,
-      label: 'Email',
-      value: 'hello@braison.dev',
-      href: 'mailto:hello@braison.dev'
+      label: "Email",
+      value: "hello@braison.dev",
+      href: "mailto:hello@braison.dev",
     },
     {
       icon: Phone,
-      label: 'Phone',
-      value: '+1 (555) 123-4567',
-      href: 'tel:+15551234567'
+      label: "Phone",
+      value: "+1 (555) 123-4567",
+      href: "tel:+15551234567",
     },
     {
       icon: MapPin,
-      label: 'Location',
-      value: 'San Francisco, CA',
-      href: null
-    }
+      label: "Location",
+      value: "San Francisco, CA",
+      href: null,
+    },
   ];
 
   return (
@@ -81,8 +90,30 @@ const Contact = () => {
             Get In Touch
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            I'm always interested in new opportunities and interesting projects. 
+            I'm always interested in new opportunities and interesting projects.
             Let's create something amazing together!
+          </p>
+          <p>
+            GitHub:{" "}
+            <a
+              href="https://github.com/notbraison"
+              className="text-blue-600 underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              github.com/notbraison
+            </a>
+          </p>
+          <p>
+            LinkedIn:{" "}
+            <a
+              href="https://www.linkedin.com/in/braison-orina-9b5576254/"
+              className="text-blue-600 underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              linkedin.com/in/braison-orina-9b5576254
+            </a>
           </p>
         </motion.div>
 
@@ -97,11 +128,11 @@ const Contact = () => {
               <h3 className="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-200">
                 Send me a message
               </h3>
-              
+
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label 
-                    htmlFor="name" 
+                  <label
+                    htmlFor="name"
                     className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
                   >
                     Name
@@ -120,8 +151,8 @@ const Contact = () => {
                 </div>
 
                 <div>
-                  <label 
-                    htmlFor="email" 
+                  <label
+                    htmlFor="email"
                     className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
                   >
                     Email
@@ -140,8 +171,8 @@ const Contact = () => {
                 </div>
 
                 <div>
-                  <label 
-                    htmlFor="message" 
+                  <label
+                    htmlFor="message"
                     className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
                   >
                     Message
@@ -161,7 +192,10 @@ const Contact = () => {
 
                 <motion.button
                   type="submit"
-                  whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(79, 70, 229, 0.3)" }}
+                  whileHover={{
+                    scale: 1.05,
+                    boxShadow: "0 20px 40px rgba(79, 70, 229, 0.3)",
+                  }}
                   whileTap={{ scale: 0.95 }}
                   className="w-full flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
                 >
@@ -184,7 +218,7 @@ const Contact = () => {
               <h3 className="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-200">
                 Contact Information
               </h3>
-              
+
               <div className="space-y-4">
                 {contactInfo.map((item, index) => {
                   const Icon = item.icon;
@@ -199,8 +233,12 @@ const Contact = () => {
                         <Icon size={20} />
                       </div>
                       <div>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">{item.label}</p>
-                        <p className="font-semibold text-gray-800 dark:text-gray-200">{item.value}</p>
+                        <p className="text-sm text-gray-600 dark:text-gray-400">
+                          {item.label}
+                        </p>
+                        <p className="font-semibold text-gray-800 dark:text-gray-200">
+                          {item.value}
+                        </p>
                       </div>
                     </motion.div>
                   );
@@ -210,9 +248,7 @@ const Contact = () => {
                       {content}
                     </a>
                   ) : (
-                    <div key={index}>
-                      {content}
-                    </div>
+                    <div key={index}>{content}</div>
                   );
                 })}
               </div>
@@ -223,7 +259,7 @@ const Contact = () => {
               <h3 className="text-xl font-bold mb-6 text-gray-800 dark:text-gray-200">
                 Let's connect
               </h3>
-              
+
               <div className="flex gap-4">
                 {socialLinks.map((link, index) => {
                   const Icon = link.icon;
@@ -261,8 +297,8 @@ const Contact = () => {
                 </h4>
               </div>
               <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
-                I'm open to new opportunities and interesting projects. 
-                Let's discuss how we can work together!
+                I'm open to new opportunities and interesting projects. Let's
+                discuss how we can work together!
               </p>
             </motion.div>
           </motion.div>
