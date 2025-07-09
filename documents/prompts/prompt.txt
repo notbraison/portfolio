@@ -1,0 +1,161 @@
+Build a modern, animated personal portfolio website using Next.js (App Router) and Tailwind CSS, inspired by the aesthetic, layout, and transitions found in the following reference sites:
+
+🎯 Reference Websites:
+🌐 sunnypatel.net
+
+🌐 brittanychiang.com
+
+🌐 sumanthsamala.com
+
+🌐 shiyunlu.com
+
+🎨 DESIGN REQUIREMENTS
+Use the following style and UI standards:
+
+
+
+Typography: Clean, bold sans-serif (e.g., Inter or Space Grotesk), and monospace for code/terminal text
+
+Layout:
+
+Sticky sidebar navigation for desktop (like brittanychiang.com)
+
+Responsive top nav on mobile
+
+Hero styling:
+
+Terminal-style or typewriter animated text
+
+Backed by an animated 3D scene using Three.js or React Three Fiber
+
+Reference: Hero section with terminal-inspired header.png, background.png
+
+🧱 SITE STRUCTURE & LAYOUT
+Break the site into clear sections with smooth transitions:
+
+1. Home
+Terminal-style greeting, typing animation
+
+3D interactive scene using react-three-fiber
+
+SVG wave animation background
+
+Responsive call-to-action
+
+2. About
+Timeline-based experience layout
+
+Left-aligned years, right-aligned descriptions with pill-style tech badges
+
+Reference: experience.png
+
+Smooth scroll reveal transitions
+
+3. Projects
+Cards that:
+
+Reveal tech stack
+
+Show buttons for GitHub & Live Preview
+
+Expand into modal views with carousels
+
+Hover glow animation: Projects layout with neon hover text.mp4
+
+Modal transitions: hovereffect and telephonebox.mp4
+
+4. Writeups / Blog
+Markdown-rendered content (MDX or Markdown parser)
+
+Entry/exit animations using Framer Motion
+
+Tag filters
+
+Project/article case-study style: sumantasamsite.mp4, shinlusam.mp4
+
+5. Contact
+Fixed-width section with:
+
+Input fields (name, email, message)
+
+CTA-style text and icons
+
+Footer-style contact: Footer or contact prompt.mp4
+
+6. Admin Dashboard (Optional)
+Protected route for uploading content (Projects + Blog)
+
+Create/Read/Update/Delete (CRUD) UI
+
+Simple editor or WYSIWYG markdown input
+
+⚙ FUNCTIONAL REQUIREMENTS
+Enable the following features:
+
+🔐 Authentication (Admin only):
+
+Clerk/Auth.js, or custom JWT-based login
+
+📝 CMS-like Dashboard:
+
+Upload, delete, edit blog entries or projects
+
+Form-based upload of images, tags, descriptions
+
+🧠 Pre-fill logic:
+
+Use GitHub and LinkedIn data (provided below) to generate initial content
+
+📤 Optimized Image Uploads:
+
+Use image compression and lazy loading
+
+🌐 SEO & Accessibility:
+
+Add proper ARIA labels, meta tags, semantic HTML
+
+🌈 ANIMATION & STYLE EXTRAS
+Add subtle but elegant animation to elevate the user experience:
+
+Section scroll reveals (Framer Motion)
+
+SVG shape morphs or animated blobs: background.png, shiyunlu-style
+
+Mouse-follow glow hover
+
+Animated page transitions between routes
+
+Loading animation on site entry
+
+💻 TECH STACK SPEC
+Use the following stack and tools:
+
+Layer	Tech
+Frontend	Next.js (App Router), Tailwind CSS, Framer Motion, React Three Fiber, Heroicons
+Animations	Framer Motion, GSAP, TypewriterJS, three.js
+Markdown	MDX, contentlayer, or remark
+Backend (Optional)	Prisma + PostgreSQL or Supabase
+Auth (Optional)	Clerk, NextAuth, or JWT
+Deployment	Vercel, GitHub CI/CD
+
+🧾 PERSONAL INFO FOR PREFILLING CONTENT
+Use the following to auto-generate placeholder content:
+
+Type	Data
+📄 Resume/CV	(To be uploaded by user)
+📁 Project Descriptions	(Upload folders with image + text + links)
+🌐 GitHub	https://github.com/yourusername
+💼 LinkedIn	https://linkedin.com/in/yourusername
+📝 Bio	“I’m a creative developer passionate about interactive design, React ecosystems, and 3D visual storytelling.”
+
+📷 ATTACHED SCREENSHOTS AND VIDEOS FOR REFERENCE
+File Name	Description
+Hero section with terminal-inspired header.png	Terminal-style hero text layout
+background.png	SVG animated background inspiration
+experience.png	Timeline layout with skill badges
+Projects layout with neon hover text.mp4	Animated hover card interactions
+Footer or contact prompt.mp4	Contact section layout and CTA style
+brittanychiangcomSidebar navhero intro.mp4	Sticky sidebar + hero intro
+sumantasamsite.mp4	Section transitions and layout inspiration
+shinlusam.mp4	Blog or article detail inspiration
+hovereffect and telephonebox.mp4	Modal and hover effects inspiration
