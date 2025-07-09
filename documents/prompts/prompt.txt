@@ -24,8 +24,6 @@ Responsive top nav on mobile
 
 Hero styling:
 
-Terminal-style or typewriter animated text
-
 Backed by an animated 3D scene using Three.js or React Three Fiber
 
 Reference: Hero section with terminal-inspired header.png, background.png
@@ -34,8 +32,6 @@ Reference: Hero section with terminal-inspired header.png, background.png
 Break the site into clear sections with smooth transitions:
 
 1. Home
-Terminal-style greeting, typing animation
-
 3D interactive scene using react-three-fiber
 
 SVG wave animation background

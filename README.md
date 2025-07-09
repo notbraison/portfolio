@@ -28,7 +28,6 @@
 
 ### 🏠 `Home`
 
-- Terminal-style hero (typewriter effect)
 - 3D scene with SVG background
 - CTA to scroll or explore
 
