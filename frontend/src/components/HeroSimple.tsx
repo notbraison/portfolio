@@ -1,11 +1,31 @@
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 
-const HeroSimple = () => {
+interface HeroSimpleProps {
+  onNavigate?: (section: string) => void;
+}
+
+const HeroSimple = ({ onNavigate }: HeroSimpleProps) => {
   return (
     <div className="relative h-screen flex items-center justify-center overflow-hidden">
+      {/* Navigation Menu */}
+      <nav className="fixed top-0 right-0 p-6 z-50">
+        <ul className="flex gap-6">
+          {["about", "projects", "blog", "contact"].map((section) => (
+            <li key={section}>
+              <button
+                onClick={() => onNavigate?.(section)}
+                className="text-gray-400 hover:text-white transition-colors duration-300 uppercase text-sm tracking-wider"
+              >
+                {section}
+              </button>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/20 via-purple-900/20 to-pink-900/20" />
-      
+
       {/* Animated background shapes */}
       <div className="absolute inset-0">
         <motion.div
@@ -17,7 +37,7 @@ const HeroSimple = () => {
           transition={{
             duration: 8,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: "easeInOut",
           }}
         />
         <motion.div
@@ -30,7 +50,7 @@ const HeroSimple = () => {
             duration: 6,
             repeat: Infinity,
             ease: "easeInOut",
-            delay: 1
+            delay: 1,
           }}
         />
         <motion.div
@@ -43,7 +63,7 @@ const HeroSimple = () => {
             duration: 10,
             repeat: Infinity,
             ease: "easeInOut",
-            delay: 2
+            delay: 2,
           }}
         />
       </div>
@@ -63,7 +83,7 @@ const HeroSimple = () => {
           >
             Hello, I'm
           </motion.p>
-          
+
           <motion.h1
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -72,43 +92,44 @@ const HeroSimple = () => {
           >
             BRAISON
           </motion.h1>
-          
+
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1 }}
             className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed"
           >
-            Creative developer passionate about{' '}
+            Creative developer passionate about{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500 font-semibold">
               interactive design
             </span>
-            , React ecosystems, and{' '}
+            , React ecosystems, and{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500 font-semibold">
               3D visual storytelling
             </span>
           </motion.p>
-          
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            className="flex flex-col sm:flex-row gap-6 justify-center items-center"
           >
             <motion.button
-              whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(0,0,0,0.2)" }}
+              onClick={() => onNavigate?.("projects")}
+              whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
+              className="px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
             >
               View My Work
             </motion.button>
-            
             <motion.button
+              onClick={() => onNavigate?.("contact")}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 bg-white/10 backdrop-blur-md text-gray-800 dark:text-white rounded-lg font-semibold text-lg border border-white/20 hover:bg-white/20 transition-all duration-300"
+              className="px-8 py-3 border-2 border-purple-500 text-purple-500 rounded-full font-semibold text-lg hover:bg-purple-500 hover:text-white transition-colors duration-300"
             >
-              Get In Touch
+              Get in Touch
             </motion.button>
           </motion.div>
         </motion.div>

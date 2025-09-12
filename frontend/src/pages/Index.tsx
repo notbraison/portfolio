@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Layout from '../components/Layout';
@@ -39,7 +38,7 @@ const Index = () => {
             exit="exit"
             transition={{ duration: 0.5 }}
           >
-            <HeroSimple />
+            <HeroSimple onNavigate={setCurrentSection} />
           </motion.div>
         );
       case 'about':
