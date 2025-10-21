@@ -14,8 +14,8 @@ const modeConfigs: Record<
   },
   arctic: {
     name: "Arctic Mode",
-    bgClass: "bg-sky-50",
-    textClass: "text-blue-600",
+    bgClass: "bg-sky-100",
+    textClass: "text-blue-700",
   },
 };
 
