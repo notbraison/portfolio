@@ -1,14 +1,15 @@
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import Layout from '../components/Layout';
-import HeroSimple from '../components/HeroSimple';
-import About from '../components/About';
-import Projects from '../components/Projects';
-import Blog from '../components/Blog';
-import Contact from '../components/Contact';
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Layout from "../components/Layout";
+import HeroSimple from "../components/HeroSimple";
+import About from "../components/About";
+import Projects from "../components/Projects";
+import UnderConstruction from "../components/UnderConstruction";
+import Contact from "../components/Contact";
+import Shapes from "../components/art/Shapes";
 
 const Index = () => {
-  const [currentSection, setCurrentSection] = useState('home');
+  const [currentSection, setCurrentSection] = useState("home");
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -16,7 +17,7 @@ const Index = () => {
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 2000);
-    
+
     return () => clearTimeout(timer);
   }, []);
 
@@ -24,11 +25,11 @@ const Index = () => {
     const sectionVariants = {
       initial: { opacity: 0, y: 20 },
       animate: { opacity: 1, y: 0 },
-      exit: { opacity: 0, y: -20 }
+      exit: { opacity: 0, y: -20 },
     };
 
     switch (currentSection) {
-      case 'home':
+      case "home":
         return (
           <motion.div
             key="home"
@@ -41,7 +42,7 @@ const Index = () => {
             <HeroSimple onNavigate={setCurrentSection} />
           </motion.div>
         );
-      case 'about':
+      case "about":
         return (
           <motion.div
             key="about"
@@ -54,7 +55,7 @@ const Index = () => {
             <About />
           </motion.div>
         );
-      case 'projects':
+      case "projects":
         return (
           <motion.div
             key="projects"
@@ -67,7 +68,7 @@ const Index = () => {
             <Projects />
           </motion.div>
         );
-      case 'blog':
+      case "blog":
         return (
           <motion.div
             key="blog"
@@ -77,10 +78,10 @@ const Index = () => {
             exit="exit"
             transition={{ duration: 0.5 }}
           >
-            <Blog />
+            <UnderConstruction />
           </motion.div>
         );
-      case 'contact':
+      case "contact":
         return (
           <motion.div
             key="contact"
@@ -91,6 +92,19 @@ const Index = () => {
             transition={{ duration: 0.5 }}
           >
             <Contact />
+          </motion.div>
+        );
+      case "interesting":
+        return (
+          <motion.div
+            key="interesting"
+            variants={sectionVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            transition={{ duration: 0.5 }}
+          >
+            <Shapes />
           </motion.div>
         );
       default:
@@ -134,9 +148,7 @@ const Index = () => {
 
   return (
     <Layout currentSection={currentSection} onSectionChange={setCurrentSection}>
-      <AnimatePresence mode="wait">
-        {renderSection()}
-      </AnimatePresence>
+      <AnimatePresence mode="wait">{renderSection()}</AnimatePresence>
     </Layout>
   );
 };

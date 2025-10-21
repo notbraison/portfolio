@@ -38,19 +38,19 @@ const Contact = () => {
     {
       name: "GitHub",
       icon: Github,
-      url: "https://github.com/yourusername",
+      url: "https://github.com/notbraison",
       color: "hover:text-gray-900 dark:hover:text-white",
     },
     {
       name: "LinkedIn",
       icon: Linkedin,
-      url: "https://linkedin.com/in/yourusername",
+      url: "  https://www.linkedin.com/in/braison-orina-9b5576254/",
       color: "hover:text-blue-600",
     },
     {
       name: "Twitter",
       icon: Twitter,
-      url: "https://twitter.com/yourusername",
+      url: "https://x.com/onewhoplaysMC",
       color: "hover:text-blue-400",
     },
   ];
@@ -59,20 +59,20 @@ const Contact = () => {
     {
       icon: Mail,
       label: "Email",
-      value: "hello@braison.dev",
-      href: "mailto:hello@braison.dev",
+      value: "orinabraison@gmail.com",
+      href: "mailto:orinabraison@gmail.com",
     },
     {
       icon: Phone,
       label: "Phone",
-      value: "+1 (555) 123-4567",
-      href: "tel:+15551234567",
+      value: "+254701124021",
+      href: "tel:+254701124021",
     },
     {
       icon: MapPin,
       label: "Location",
-      value: "San Francisco, CA",
-      href: null,
+      value: "Nairobi,Kenya",
+      href: "https://maps.app.goo.gl/Cjtnq2TB2tz7VBvG9",
     },
   ];
 
@@ -93,7 +93,7 @@ const Contact = () => {
             I'm always interested in new opportunities and interesting projects.
             Let's create something amazing together!
           </p>
-          <p>
+          {/* <p>
             GitHub:{" "}
             <a
               href="https://github.com/notbraison"
@@ -103,8 +103,8 @@ const Contact = () => {
             >
               github.com/notbraison
             </a>
-          </p>
-          <p>
+          </p> */}
+          {/* <p>
             LinkedIn:{" "}
             <a
               href="https://www.linkedin.com/in/braison-orina-9b5576254/"
@@ -114,7 +114,7 @@ const Contact = () => {
             >
               linkedin.com/in/braison-orina-9b5576254
             </a>
-          </p>
+          </p> */}
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-16">

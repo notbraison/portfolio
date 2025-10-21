@@ -10,11 +10,19 @@ const HeroSimple = ({ onNavigate }: HeroSimpleProps) => {
       {/* Navigation Menu */}
       <nav className="fixed top-0 right-0 p-6 z-50">
         <ul className="flex gap-6">
-          {["about", "projects", "blog", "contact"].map((section) => (
+          {[
+            "about",
+            "projects",
+            "art",
+            "photography",
+            "interesting",
+            "contact",
+          ].map((section) => (
             <li key={section}>
               <button
                 onClick={() => onNavigate?.(section)}
                 className="text-gray-400 hover:text-white transition-colors duration-300 uppercase text-sm tracking-wider"
+                aria-label={`Go to ${section}`}
               >
                 {section}
               </button>
