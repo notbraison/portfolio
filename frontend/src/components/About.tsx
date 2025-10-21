@@ -18,11 +18,40 @@ interface TimelineItem {
   description: string[];
   type: string;
   techStack?: string[];
+  tech?: string[]; // allow both keys if present
   achievements?: string[];
+  relevantCoursework?: string[]; // added valid property
 }
 
 const About = () => {
   const timeline: TimelineItem[] = [
+    {
+      year: "2025",
+      title: "Software Developer",
+      company: "Go Digital Africa",
+      location: "Westlands,Nairobi, Kenya",
+      description: [
+        "Developed and deployed multiple client portfolio websites and a full-featured news publishing platform.",
+        "Built a dual-frontend system: ",
+        "Admin portal – CRUD for articles, comments, and user management. ",
+        "Reader portal – user registration, newsletter signup, and article browsing.",
+        "Backend: Designed and implemented REST APIs using Laravel 12 (MVC) with a SQL database.",
+        "Frontend: Built responsive interfaces with ReactJS, integrated with backend APIs.",
+        "Cloud & Deployment: Deployed as 4 microservices on Railway, later migrated to cPanel for production.",
+        "Integrated Firebase for authentication and image storage in articles.",
+        "Served on the bug-fixing team for the company’s main site (godigitalafrica.com)",
+      ],
+      type: "work",
+      techStack: [
+        "React",
+        "Python(Django)",
+        "TypeScript",
+        "Laravel",
+        "AWS",
+        "Node.js",
+        "PostgreSQL",
+      ],
+    },
     {
       year: "2024",
       title: "Software Engineering Intern",
@@ -35,7 +64,7 @@ const About = () => {
         "Optimized database queries resulting in 40% faster load times",
       ],
       type: "work",
-      techStack: ["React", "TypeScript", "Node.js", "PostgreSQL"],
+      techStack: ["Vue", "Laravel", "Node.js", "MySQL"],
     },
     {
       year: "2021–2025",
@@ -43,13 +72,18 @@ const About = () => {
       company: "University of Nairobi",
       location: "Nairobi, Kenya",
       description: [
-        "First Class Honors expected",
-        "Led multiple team projects in software development",
-        "Published research paper on AI applications",
-        "Active member of Computer Science Club",
+        "Studied core computer science subjects including algorithms, data structures, databases, and software development",
       ],
       type: "education",
-      achievements: ["Dean's List 2023", "Best Student Project 2024"],
+      relevantCoursework: [
+        "Data Structures & Algorithms",
+        "Artificial Intelligence Applications",
+        "Distributed Systems",
+        "Computer Network Security",
+        "Machine Learning",
+        "Compiler Construction",
+        "Project Management",
+      ],
     },
   ];
 
@@ -57,9 +91,9 @@ const About = () => {
     {
       category: "Frontend",
       technologies: [
+        { name: "Vue", level: 90 },
         { name: "React", level: 90 },
         { name: "TypeScript", level: 85 },
-        { name: "Three.js", level: 75 },
         { name: "Next.js", level: 80 },
         { name: "Tailwind CSS", level: 95 },
       ],
@@ -67,9 +101,11 @@ const About = () => {
     {
       category: "Backend",
       technologies: [
+        { name: "PHP Laravel", level: 85 },
         { name: "Node.js", level: 85 },
-        { name: "GraphQL", level: 70 },
+        { name: "MySQL", level: 70 },
         { name: "PostgreSQL", level: 80 },
+        { name: "Python", level: 80 },
       ],
     },
     {

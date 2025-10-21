@@ -1,6 +1,12 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Github, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  ExternalLink,
+  Github,
+  X,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 
 interface Project {
   id: number;
@@ -22,89 +28,136 @@ const Projects = () => {
   const projects: Project[] = [
     {
       id: 1,
-      title: 'Blog Web Application',
-      description: 'A dynamic blog platform with user authentication, CRUD for posts, and responsive design.',
-      longDescription: 'A comprehensive portfolio website built with React Three Fiber, featuring interactive 3D elements, smooth animations, and responsive design. This project demonstrates advanced frontend development skills including WebGL integration, performance optimization, and modern UI/UX principles.',
-      tech: ['Node.js', 'Express', 'EJS', 'Bootstrap', 'MongoDB', 'Mongoose'],
-      image: '/lovable-uploads/ebf4e624-3656-4574-9eb8-a8701fb3fe1a.png',
-      github: 'https://github.com/yourusername/project-one',
-      live: 'https://project-one-demo.com',
+      title: "East African Bullet (News Site)",
+      description:
+        "A dual-frontend news platform with admin and reader portals, deployed to production.",
+      longDescription: `Built a dual-frontend system:
+• Admin portal – CRUD for articles, comments, and user management.
+• Reader portal – user registration, newsletter signup, and article browsing.
+
+Backend: Designed and implemented REST APIs using Laravel 12 (MVC) with a SQL database.
+Frontend: Built responsive interfaces with ReactJS, integrated with backend APIs.
+Cloud & Deployment: Deployed as 4 microservices on Railway, later migrated to cPanel for production.
+Integrated Firebase for authentication and image storage in articles.`,
+      tech: [
+        "React",
+        "TypeScript",
+        "Laravel",
+        "Node.js",
+        "Firebase",
+        "AWS",
+        "PostgreSQL",
+      ],
+      image: "/assets/EABulletin.png",
+      github:
+        "https://github.com/GDA-Developers-Hub/Finance-and-Systems-Consultants-Limited",
+      live: "https://frontend-production-ec5e.up.railway.app/",
       featured: true,
-      images: ['/lovable-uploads/ebf4e624-3656-4574-9eb8-a8701fb3fe1a.png']
+      images: ["/assets/EABulletin.png"],
     },
     {
       id: 2,
-      title: 'Library Management System',
-      description: 'A system for cataloging, borrowing, and returning books, with advanced search, user management, and efficient database design.',
-      longDescription: 'A complete e-commerce platform featuring user authentication, product management, cart functionality, and secure payment processing. Built with scalability and performance in mind.',
-      tech: ['PHP (Laravel)', 'MySQL', 'JavaScript', 'Vue.js', 'CSS'],
-      image: '/lovable-uploads/ebf4e624-3656-4574-9eb8-a8701fb3fe1a.png',
-      github: 'https://github.com/yourusername/ecommerce',
-      live: 'https://ecommerce-demo.com',
+      title: "TES Network (Humanitarian Website)",
+      description:
+        "Responsive public site with a protected admin CMS for managing programs, events, stories, gallery and donations.",
+      longDescription: `Built a responsive public site plus a protected admin CMS:
+• Public site – responsive pages (Home, About, Programs, Events, Gallery, Stories, Donate, Team, Contact) with lazy-loaded media and accessible UI.
+• Admin CMS – email/password auth, protected routes, role-based access, full CRUD for stories/events/programs/gallery/team/donations, and media management.
+
+Backend: Supabase (Postgres) with Edge Functions for email notifications and signed storage URL handling.
+Frontend: React + Vite + TypeScript, TanStack React Query for data, Tailwind + Radix UI + shadcn/ui for design.
+Cloud & Deployment: Vercel for frontend, Supabase for backend/functions; RLS policies and secure signed URLs for storage.`,
+      tech: [
+        "React",
+        "TypeScript",
+        "Vite",
+        "Tailwind",
+        "Radix UI",
+        "shadcn/ui",
+        "Lucide React",
+        "TanStack React Query",
+        "Supabase",
+        "PostgreSQL",
+        "SendGrid",
+        "Vercel",
+        "PostCSS",
+        "ESLint",
+      ],
+      image: "/assets/TES.png",
+      github: "https://github.com/notbraison/TES",
+      live: "https://tes-bay-six.vercel.app/",
       featured: true,
-      images: ['/lovable-uploads/ebf4e624-3656-4574-9eb8-a8701fb3fe1a.png']
+      images: ["/assets/TES.png"],
     },
     {
       id: 3,
-      title: 'Building Management System',
-      description: 'A full-stack app for property owners to manage buildings, rooms, and bookings, with role-based access, booking validation, and payment integration.',
-      longDescription: 'A sophisticated dashboard application that transforms complex datasets into intuitive, interactive visualizations. Features real-time updates, custom chart types, and export capabilities.',
-      tech: ['Laravel', 'MySQL', 'Vue.js', 'Stripe'],
-      image: '/lovable-uploads/ebf4e624-3656-4574-9eb8-a8701fb3fe1a.png',
-      github: 'https://github.com/yourusername/dashboard',
-      live: 'https://dashboard-demo.com',
+      title: "Building Management System",
+      description:
+        "A full-stack app for property owners to manage buildings, rooms, and bookings, with role-based access, booking validation, and payment integration.",
+      longDescription:
+        "A sophisticated dashboard application that transforms complex datasets into intuitive, interactive visualizations. Features real-time updates, custom chart types, and export capabilities.",
+      tech: ["Laravel", "MySQL", "Vue.js", "Stripe"],
+      image: "/lovable-uploads/ebf4e624-3656-4574-9eb8-a8701fb3fe1a.png",
+      github: "https://github.com/yourusername/dashboard",
+      live: "https://dashboard-demo.com",
       featured: false,
-      images: ['/lovable-uploads/ebf4e624-3656-4574-9eb8-a8701fb3fe1a.png']
+      images: ["/lovable-uploads/ebf4e624-3656-4574-9eb8-a8701fb3fe1a.png"],
     },
     {
       id: 4,
-      title: 'Expensely (Expense Sharing Platform)',
-      description: 'An app for managing shared expenses in groups, with real-time expense splitting and transaction tracking.',
-      longDescription: 'A sophisticated dashboard application that transforms complex datasets into intuitive, interactive visualizations. Features real-time updates, custom chart types, and export capabilities.',
-      tech: ['Vue.js', 'Laravel', 'MySQL'],
-      image: '/lovable-uploads/ebf4e624-3656-4574-9eb8-a8701fb3fe1a.png',
-      github: 'https://github.com/yourusername/dashboard',
-      live: 'https://dashboard-demo.com',
+      title: "Expensely (Expense Sharing Platform)",
+      description:
+        "An app for managing shared expenses in groups, with real-time expense splitting and transaction tracking.",
+      longDescription:
+        "A sophisticated dashboard application that transforms complex datasets into intuitive, interactive visualizations. Features real-time updates, custom chart types, and export capabilities.",
+      tech: ["Vue.js", "Laravel", "MySQL"],
+      image: "/lovable-uploads/ebf4e624-3656-4574-9eb8-a8701fb3fe1a.png",
+      github: "https://github.com/yourusername/dashboard",
+      live: "https://dashboard-demo.com",
       featured: false,
-      images: ['/lovable-uploads/ebf4e624-3656-4574-9eb8-a8701fb3fe1a.png']
+      images: ["/lovable-uploads/ebf4e624-3656-4574-9eb8-a8701fb3fe1a.png"],
     },
     {
       id: 5,
-      title: 'AI Chatbot for Pizza Ordering',
-      description: 'An AI-powered chatbot that helps users order pizza via conversational interface, using NLP for intent recognition.',
-      longDescription: 'A sophisticated dashboard application that transforms complex datasets into intuitive, interactive visualizations. Features real-time updates, custom chart types, and export capabilities.',
-      tech: ['Python', 'TensorFlow', 'NLTK'],
-      image: '/lovable-uploads/ebf4e624-3656-4574-9eb8-a8701fb3fe1a.png',
-      github: 'https://github.com/yourusername/dashboard',
-      live: 'https://dashboard-demo.com',
+      title: "AI Chatbot for Pizza Ordering",
+      description:
+        "An AI-powered chatbot that helps users order pizza via conversational interface, using NLP for intent recognition.",
+      longDescription:
+        "A sophisticated dashboard application that transforms complex datasets into intuitive, interactive visualizations. Features real-time updates, custom chart types, and export capabilities.",
+      tech: ["Python", "TensorFlow", "NLTK"],
+      image: "/lovable-uploads/ebf4e624-3656-4574-9eb8-a8701fb3fe1a.png",
+      github: "https://github.com/yourusername/dashboard",
+      live: "https://dashboard-demo.com",
       featured: false,
-      images: ['/lovable-uploads/ebf4e624-3656-4574-9eb8-a8701fb3fe1a.png']
+      images: ["/lovable-uploads/ebf4e624-3656-4574-9eb8-a8701fb3fe1a.png"],
     },
     {
       id: 6,
-      title: 'Mini Compiler for C to Python',
-      description: 'A mini compiler that translates C code into Python, implementing lexical analysis and syntax parsing.',
-      longDescription: 'A sophisticated dashboard application that transforms complex datasets into intuitive, interactive visualizations. Features real-time updates, custom chart types, and export capabilities.',
-      tech: ['Python', 'Lexers/Parsers', 'AST'],
-      image: '/lovable-uploads/ebf4e624-3656-4574-9eb8-a8701fb3fe1a.png',
-      github: 'https://github.com/yourusername/dashboard',
-      live: 'https://dashboard-demo.com',
+      title: "Mini Compiler for C to Python",
+      description:
+        "A mini compiler that translates C code into Python, implementing lexical analysis and syntax parsing.",
+      longDescription:
+        "A sophisticated dashboard application that transforms complex datasets into intuitive, interactive visualizations. Features real-time updates, custom chart types, and export capabilities.",
+      tech: ["Python", "Lexers/Parsers", "AST"],
+      image: "/lovable-uploads/ebf4e624-3656-4574-9eb8-a8701fb3fe1a.png",
+      github: "https://github.com/yourusername/dashboard",
+      live: "https://dashboard-demo.com",
       featured: false,
-      images: ['/lovable-uploads/ebf4e624-3656-4574-9eb8-a8701fb3fe1a.png']
-    }
+      images: ["/lovable-uploads/ebf4e624-3656-4574-9eb8-a8701fb3fe1a.png"],
+    },
   ];
 
-  const featuredProjects = projects.filter(p => p.featured);
-  const otherProjects = projects.filter(p => !p.featured);
+  const featuredProjects = projects.filter((p) => p.featured);
+  const otherProjects = projects.filter((p) => !p.featured);
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1
-      }
-    }
+        staggerChildren: 0.1,
+      },
+    },
   };
 
   const itemVariants = {
@@ -113,22 +166,22 @@ const Projects = () => {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6
-      }
-    }
+        duration: 0.6,
+      },
+    },
   };
 
   const nextImage = () => {
     if (selectedProject) {
-      setCurrentImageIndex((prevIndex) => 
-        (prevIndex + 1) % selectedProject.images.length
+      setCurrentImageIndex(
+        (prevIndex) => (prevIndex + 1) % selectedProject.images.length
       );
     }
   };
 
   const prevImage = () => {
     if (selectedProject) {
-      setCurrentImageIndex((prevIndex) => 
+      setCurrentImageIndex((prevIndex) =>
         prevIndex === 0 ? selectedProject.images.length - 1 : prevIndex - 1
       );
     }
@@ -148,8 +201,8 @@ const Projects = () => {
             Projects
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            A showcase of my recent work, featuring interactive web applications, 
-            3D experiences, and full-stack solutions.
+            A showcase of my recent work, featuring interactive web
+            applications, 3D experiences, and full-stack solutions.
           </p>
         </motion.div>
 
@@ -160,7 +213,9 @@ const Projects = () => {
           animate="visible"
           className="mb-20"
         >
-          <h3 className="text-2xl font-bold mb-8 text-gray-800 dark:text-gray-200">Featured Projects</h3>
+          <h3 className="text-2xl font-bold mb-8 text-gray-800 dark:text-gray-200">
+            Featured Projects
+          </h3>
           <div className="grid md:grid-cols-2 gap-8">
             {featuredProjects.map((project, index) => (
               <motion.div
@@ -241,7 +296,9 @@ const Projects = () => {
           initial="hidden"
           animate="visible"
         >
-          <h3 className="text-2xl font-bold mb-8 text-gray-800 dark:text-gray-200">Other Projects</h3>
+          <h3 className="text-2xl font-bold mb-8 text-gray-800 dark:text-gray-200">
+            Other Projects
+          </h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {otherProjects.map((project) => (
               <motion.div
@@ -278,6 +335,8 @@ const Projects = () => {
                       rel="noopener noreferrer"
                       className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                       onClick={(e) => e.stopPropagation()}
+                      aria-label={`View ${project.title} on GitHub`}
+                      title={`View ${project.title} on GitHub`}
                     >
                       <Github size={18} />
                     </a>
@@ -287,6 +346,8 @@ const Projects = () => {
                       rel="noopener noreferrer"
                       className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                       onClick={(e) => e.stopPropagation()}
+                      aria-label={`Open live demo for ${project.title}`}
+                      title={`Open live demo for ${project.title}`}
                     >
                       <ExternalLink size={18} />
                     </a>
@@ -320,10 +381,12 @@ const Projects = () => {
                 <button
                   onClick={() => setSelectedProject(null)}
                   className="absolute top-4 right-4 z-10 p-2 bg-black/20 backdrop-blur-sm rounded-full hover:bg-black/40 transition-colors"
+                  aria-label="Close project modal"
+                  title="Close project modal"
                 >
                   <X size={20} className="text-white" />
                 </button>
-                
+
                 {/* Image carousel */}
                 <div className="relative h-64 md:h-80 overflow-hidden rounded-t-xl">
                   <img
@@ -336,19 +399,23 @@ const Projects = () => {
                       <button
                         onClick={prevImage}
                         className="absolute left-4 top-1/2 transform -translate-y-1/2 p-2 bg-black/20 backdrop-blur-sm rounded-full hover:bg-black/40 transition-colors"
+                        aria-label="Previous image"
+                        title="Previous image"
                       >
                         <ChevronLeft size={20} className="text-white" />
                       </button>
                       <button
                         onClick={nextImage}
                         className="absolute right-4 top-1/2 transform -translate-y-1/2 p-2 bg-black/20 backdrop-blur-sm rounded-full hover:bg-black/40 transition-colors"
+                        aria-label="Next image"
+                        title="Next image"
                       >
                         <ChevronRight size={20} className="text-white" />
                       </button>
                     </>
                   )}
                 </div>
-                
+
                 <div className="p-8">
                   <h3 className="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-200">
                     {selectedProject.title}
@@ -356,9 +423,11 @@ const Projects = () => {
                   <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
                     {selectedProject.longDescription}
                   </p>
-                  
+
                   <div className="mb-6">
-                    <h4 className="text-lg font-semibold mb-3 text-gray-800 dark:text-gray-200">Technologies Used</h4>
+                    <h4 className="text-lg font-semibold mb-3 text-gray-800 dark:text-gray-200">
+                      Technologies Used
+                    </h4>
                     <div className="flex flex-wrap gap-2">
                       {selectedProject.tech.map((tech) => (
                         <span
@@ -370,7 +439,7 @@ const Projects = () => {
                       ))}
                     </div>
                   </div>
-                  
+
                   <div className="flex gap-4">
                     <motion.a
                       href={selectedProject.github}
