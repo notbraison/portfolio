@@ -11,8 +11,8 @@ const HeroSimple = ({ onNavigate }: HeroSimpleProps) => {
       <nav className="fixed top-0 right-0 p-6 z-50">
         <ul className="flex gap-6">
           {[
-            "about",
-            "projects",
+            /* "about", */
+            "games",
             "art",
             "photography",
             "interesting",
@@ -142,25 +142,7 @@ const HeroSimple = ({ onNavigate }: HeroSimpleProps) => {
           </motion.div>
         </motion.div>
 
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="w-6 h-10 border-2 border-gray-400 dark:border-gray-600 rounded-full flex justify-center"
-          >
-            <motion.div
-              animate={{ y: [0, 12, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="w-1 h-3 bg-gray-400 dark:bg-gray-600 rounded-full mt-2"
-            />
-          </motion.div>
-        </motion.div>
+        {/* Scroll indicator removed (global TopNav will handle navigation) */}
       </div>
     </div>
   );

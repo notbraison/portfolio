@@ -7,6 +7,7 @@ import Projects from "../components/Projects";
 import UnderConstruction from "../components/UnderConstruction";
 import Contact from "../components/Contact";
 import Shapes from "../components/art/Shapes";
+import Games from "../components/Games";
 
 const Index = () => {
   const [currentSection, setCurrentSection] = useState("home");
@@ -105,6 +106,19 @@ const Index = () => {
             transition={{ duration: 0.5 }}
           >
             <Shapes />
+          </motion.div>
+        );
+      case "games":
+        return (
+          <motion.div
+            key="games"
+            variants={sectionVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            transition={{ duration: 0.5 }}
+          >
+            <Games />
           </motion.div>
         );
       default:
