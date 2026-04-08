@@ -6,7 +6,10 @@ import {
   X,
   ChevronLeft,
   ChevronRight,
+  Gamepad2,
 } from "lucide-react";
+
+import { creativeWork } from "../data/portfolio";
 
 interface Project {
   id: number;
@@ -64,9 +67,9 @@ Integrated Firebase for authentication and image storage in articles.`,
 • Public site – responsive pages (Home, About, Programs, Events, Gallery, Stories, Donate, Team, Contact) with lazy-loaded media and accessible UI.
 • Admin CMS – email/password auth, protected routes, role-based access, full CRUD for stories/events/programs/gallery/team/donations, and media management.
 
-Backend: Supabase (Postgres) with Edge Functions for email notifications and signed storage URL handling.
+Backend: PostgreSQL with serverless functions for email notifications and signed storage URL handling.
 Frontend: React + Vite + TypeScript, TanStack React Query for data, Tailwind + Radix UI + shadcn/ui for design.
-Cloud & Deployment: Vercel for frontend, Supabase for backend/functions; RLS policies and secure signed URLs for storage.`,
+Cloud & Deployment: Vercel for frontend with a managed backend and secure signed storage URLs.`,
       tech: [
         "React",
         "TypeScript",
@@ -76,7 +79,6 @@ Cloud & Deployment: Vercel for frontend, Supabase for backend/functions; RLS pol
         "shadcn/ui",
         "Lucide React",
         "TanStack React Query",
-        "Supabase",
         "PostgreSQL",
         "SendGrid",
         "Vercel",
@@ -286,6 +288,49 @@ Cloud & Deployment: Vercel for frontend, Supabase for backend/functions; RLS pol
                   </div>
                 </div>
               </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Games (now listed under Projects) */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="mb-20"
+        >
+          <h3 className="text-2xl font-bold mb-8 text-gray-800 dark:text-gray-200">
+            Games
+          </h3>
+          <div className="grid md:grid-cols-2 gap-6">
+            {creativeWork.games.map((game) => (
+              <motion.a
+                key={game.id}
+                href={game.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                variants={itemVariants}
+                whileHover={{ y: -6 }}
+                className="group bg-white/40 dark:bg-gray-800/40 backdrop-blur-sm rounded-lg p-6 border border-gray-200 dark:border-gray-700 hover:border-blue-400 dark:hover:border-blue-600 transition-all duration-300"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="p-3 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300">
+                    <Gamepad2 size={20} />
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                      {game.title}
+                    </h4>
+                    <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">
+                      Play on external site
+                    </p>
+                  </div>
+                  <ExternalLink
+                    size={18}
+                    className="text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors"
+                  />
+                </div>
+              </motion.a>
             ))}
           </div>
         </motion.div>
