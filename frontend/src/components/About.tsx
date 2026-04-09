@@ -121,7 +121,7 @@ const About = () => {
   }, []);
 
   return (
-    <div className="py-16 px-4 md:px-10 lg:px-16 bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 dark:from-slate-900 dark:via-slate-900 dark:to-blue-950">
+    <div className="py-16 px-4 md:px-10 lg:px-16">
       <section className="w-full space-y-8">
         <div className="rounded-2xl p-5 md:p-6 bg-white/80 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700 shadow-[0_12px_30px_rgba(15,23,42,0.08)]">
           <button

@@ -136,8 +136,8 @@ const SectionSidebar = () => {
         </nav>
       </div>
 
-      <div className="hidden md:block fixed top-1/2 right-6 -translate-y-1/2 z-40">
-        <nav className="flex flex-col items-center gap-2 rounded-full border border-slate-200/80 dark:border-slate-700/90 bg-white/85 dark:bg-slate-900/80 backdrop-blur-xl shadow-[0_20px_40px_rgba(15,23,42,0.18)] px-2 py-2">
+      <div className="hidden md:block fixed top-[44%] right-6 -translate-y-1/2 z-40">
+        <nav className="flex flex-col items-center gap-2 rounded-[2.1rem] border border-slate-200/80 dark:border-slate-700/90 bg-white/85 dark:bg-slate-900/80 backdrop-blur-xl shadow-[0_20px_40px_rgba(15,23,42,0.18)] px-2.5 py-2.5">
           {isHomePage ? (
             HOME_SECTION_ITEMS.map((item) => {
               const isActive = activeSection === item.id;
@@ -145,7 +145,7 @@ const SectionSidebar = () => {
                 <Link
                   key={item.id}
                   to={`/#${item.id}`}
-                  className={`w-24 text-center px-3 py-2 rounded-full text-sm font-semibold transition-colors duration-300 ${
+                  className={`w-[6.65rem] text-center px-3 py-2.5 rounded-[1.2rem] text-sm font-semibold transition-colors duration-300 ${
                     isActive
                       ? "bg-blue-800 text-white"
                       : "text-slate-700 dark:text-slate-200 hover:bg-slate-200/70 dark:hover:bg-slate-700/60"
@@ -159,7 +159,7 @@ const SectionSidebar = () => {
             <>
               <Link
                 to="/"
-                className="w-24 text-center px-3 py-2 rounded-full text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-200/70 dark:hover:bg-slate-700/60 transition-colors duration-300"
+                className="w-[6.65rem] text-center px-3 py-2.5 rounded-[1.2rem] text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-200/70 dark:hover:bg-slate-700/60 transition-colors duration-300"
               >
                 Home
               </Link>
@@ -169,7 +169,7 @@ const SectionSidebar = () => {
                   <Link
                     key={item.id}
                     to={`/projects#${item.id}`}
-                    className={`w-24 text-center px-3 py-2 rounded-full text-sm font-semibold transition-colors duration-300 ${
+                    className={`w-[6.65rem] text-center px-3 py-2.5 rounded-[1.2rem] text-sm font-semibold transition-colors duration-300 ${
                       isActive
                         ? "bg-blue-800 text-white"
                         : "text-slate-700 dark:text-slate-200 hover:bg-slate-200/70 dark:hover:bg-slate-700/60"
@@ -183,7 +183,7 @@ const SectionSidebar = () => {
           ) : (
             <Link
               to="/"
-              className="w-24 text-center px-3 py-2 rounded-full text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-200/70 dark:hover:bg-slate-700/60 transition-colors duration-300"
+              className="w-[6.65rem] text-center px-3 py-2.5 rounded-[1.2rem] text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-200/70 dark:hover:bg-slate-700/60 transition-colors duration-300"
             >
               Home
             </Link>
