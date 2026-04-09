@@ -1,4 +1,4 @@
-my prtfolio website 
+my portfolio website 
 
 https://portfolio-beta-fawn-bstdtywgrr.vercel.app/
 

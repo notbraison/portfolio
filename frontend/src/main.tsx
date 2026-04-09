@@ -4,7 +4,7 @@ import { ThemeProvider } from './components/theme-provider.tsx'
 import './index.css'
 
 createRoot(document.getElementById("root")!).render(
-  <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+  <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
     <App />
   </ThemeProvider>
 );

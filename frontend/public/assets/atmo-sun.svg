@@ -1,0 +1,55 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="coronaOuter" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(512 512) rotate(90) scale(490)">
+      <stop offset="0" stop-color="#FFD98A" stop-opacity="0.62"/>
+      <stop offset="0.58" stop-color="#FFC160" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#FFB14A" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="coronaInner" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(512 512) rotate(90) scale(360)">
+      <stop offset="0" stop-color="#FFE6A8" stop-opacity="0.8"/>
+      <stop offset="1" stop-color="#FFC96B" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="sunBody" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(430 390) rotate(45) scale(360)">
+      <stop offset="0" stop-color="#FFF7DE"/>
+      <stop offset="0.35" stop-color="#FFE38F"/>
+      <stop offset="0.72" stop-color="#FFB84F"/>
+      <stop offset="1" stop-color="#F17E1D"/>
+    </radialGradient>
+    <radialGradient id="limbDarken" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(512 512) rotate(90) scale(286)">
+      <stop offset="0.72" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#9F4200" stop-opacity="0.46"/>
+    </radialGradient>
+    <filter id="softBlur" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="7"/>
+    </filter>
+    <filter id="detailBlur" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2.2"/>
+    </filter>
+  </defs>
+
+  <circle cx="512" cy="512" r="492" fill="url(#coronaOuter)"/>
+  <circle cx="512" cy="512" r="366" fill="url(#coronaInner)"/>
+
+  <g>
+    <circle cx="512" cy="512" r="286" fill="url(#sunBody)"/>
+    <circle cx="512" cy="512" r="286" fill="url(#limbDarken)"/>
+  </g>
+
+  <g filter="url(#detailBlur)" opacity="0.42" fill="#FF9D32">
+    <ellipse cx="430" cy="448" rx="120" ry="52"/>
+    <ellipse cx="600" cy="484" rx="138" ry="62"/>
+    <ellipse cx="514" cy="594" rx="168" ry="58"/>
+    <ellipse cx="520" cy="396" rx="150" ry="48"/>
+  </g>
+
+  <g filter="url(#softBlur)" opacity="0.34" fill="#FFF1BE">
+    <ellipse cx="426" cy="410" rx="132" ry="26"/>
+    <ellipse cx="612" cy="530" rx="146" ry="30"/>
+    <ellipse cx="500" cy="628" rx="172" ry="28"/>
+  </g>
+
+  <g filter="url(#softBlur)" opacity="0.26" fill="#FFC368">
+    <path d="M296 490c28-54 70-86 126-100-36 48-46 104-20 164-46-18-82-34-106-64z"/>
+    <path d="M732 560c-22 54-62 88-116 108 34-52 38-106 14-164 44 16 80 30 102 56z"/>
+  </g>
+</svg>

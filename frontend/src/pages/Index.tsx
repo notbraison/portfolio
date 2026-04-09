@@ -9,7 +9,7 @@ const Index = () => {
     if (location.hash) {
       const sectionId = location.hash.replace("#", "");
       const section = document.getElementById(sectionId);
-      section?.scrollIntoView({ behavior: "smooth", block: "start" });
+      section?.scrollIntoView({ behavior: "auto", block: "start" });
     }
   }, [location.hash]);
 

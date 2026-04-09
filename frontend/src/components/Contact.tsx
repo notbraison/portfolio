@@ -194,7 +194,7 @@ const Contact = () => {
           <About />
         </section>
 
-        <div className="mb-16">
+        <div id="technologies" className="mb-16 scroll-mt-24">
           <div className="flex flex-wrap items-center justify-center gap-4 mb-7">
             <h2 className="text-4xl md:text-5xl font-bold text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent pb-1">
               Technologies I Use
@@ -382,11 +382,11 @@ const Contact = () => {
 
             {/* Social Links */}
             <div className="bg-white/30 dark:bg-gray-800/30 backdrop-blur-sm rounded-xl p-8 border border-gray-200 dark:border-gray-700">
-              <h3 className="text-xl font-bold mb-6 text-gray-800 dark:text-gray-200">
+              <h3 className="text-xl font-bold mb-6 text-center text-gray-800 dark:text-gray-200">
                 Let's connect
               </h3>
 
-              <div className="flex gap-4">
+              <div className="flex gap-4 justify-center">
                 {socialLinks.map((link, index) => {
                   const Icon = link.icon;
                   return (

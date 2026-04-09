@@ -120,6 +120,30 @@ const About = () => {
     return () => window.removeEventListener("about:expand", expandAll);
   }, []);
 
+  useEffect(() => {
+    const technologiesSection = document.getElementById("technologies");
+    if (!technologiesSection) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const hasEnteredTechnologies = entries.some((entry) => entry.isIntersecting);
+        if (hasEnteredTechnologies) {
+          setShowExperience(false);
+          setShowEducation(false);
+        }
+      },
+      {
+        root: null,
+        rootMargin: "-15% 0px -45% 0px",
+        threshold: [0.1, 0.2, 0.35],
+      }
+    );
+
+    observer.observe(technologiesSection);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="py-16 px-4 md:px-10 lg:px-16">
       <section className="w-full space-y-8">

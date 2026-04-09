@@ -76,12 +76,9 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-10 pt-8 border-t border-slate-800/70 flex flex-col md:flex-row items-center justify-between gap-3">
-          <p className="text-blue-400">
+        <div className="mt-10 pt-8 border-t border-slate-800/70 flex items-center justify-center">
+          <p className="text-red-500 text-center">
             © {currentYear} Braison Orina. All rights reserved.
-          </p>
-          <p className="text-slate-400">
-            Made with <span className="text-red-500">React</span> and lots of coffee
           </p>
         </div>
       </div>

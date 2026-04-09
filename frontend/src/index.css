@@ -195,7 +195,7 @@ html {
   overflow: hidden;
   border-radius: 14px;
   border: 1px solid rgba(147, 197, 253, 0.55);
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.66);
   box-shadow: 0 16px 48px rgba(40, 58, 118, 0.16);
   backdrop-filter: blur(8px);
 }
@@ -214,7 +214,7 @@ html {
   width: 208px;
   height: 208px;
   margin: 0 auto 16px;
-  border-radius: 50%;
+  border-radius: 12px;
   object-fit: cover;
   object-position: center 20%;
   border: 3px solid rgba(255, 255, 255, 0.95);
@@ -629,6 +629,94 @@ html {
   50% {
     transform: scale(1.04);
   }
+}
+
+/* Light-mode-only atmospheric redesign (dark mode untouched) */
+:root:not(.dark) .atmo-sky {
+  background:
+    radial-gradient(120% 96% at 54% 102%, rgba(255, 190, 122, 0.48), transparent 56%),
+    radial-gradient(88% 66% at 72% 26%, rgba(255, 255, 255, 0.32), transparent 60%),
+    radial-gradient(90% 62% at 20% 10%, rgba(172, 201, 241, 0.46), transparent 64%),
+    linear-gradient(180deg, rgba(86, 129, 186, 0.95) 0%, rgba(127, 162, 208, 0.9) 45%, rgba(179, 197, 223, 0.84) 74%, rgba(223, 214, 205, 0.82) 100%);
+}
+
+:root:not(.dark) .atmo-stars {
+  opacity: 0.08;
+}
+
+:root:not(.dark) .atmo-star-haze {
+  opacity: 0.14;
+  filter: blur(12px);
+}
+
+:root:not(.dark) .atmo-orbits {
+  opacity: 0.05;
+}
+
+:root:not(.dark) .atmo-cloud {
+  mix-blend-mode: normal;
+  filter: blur(14px);
+}
+
+:root:not(.dark) .atmo-cloud-back {
+  opacity: 0.82;
+  top: -2%;
+  bottom: 18%;
+  transform: translate3d(calc(var(--drift-x) * 0.22), calc(var(--drift-y) * 0.15 + var(--scroll-y) * -0.28), 0);
+}
+
+:root:not(.dark) .atmo-cloud-mid {
+  opacity: 0.92;
+  top: 10%;
+  bottom: -2%;
+  transform: translate3d(calc(var(--drift-x) * 0.3), calc(var(--drift-y) * 0.2 + var(--scroll-y) * -0.44), 0);
+}
+
+:root:not(.dark) .atmo-cloud-wisp {
+  opacity: 0.76;
+  top: 6%;
+  bottom: 52%;
+  filter: blur(12px);
+  background:
+    radial-gradient(42% 24% at 20% 40%, rgba(255, 255, 255, 0.84), transparent 74%),
+    radial-gradient(38% 22% at 52% 34%, rgba(255, 255, 255, 0.8), transparent 72%),
+    radial-gradient(44% 22% at 80% 44%, rgba(255, 255, 255, 0.84), transparent 74%);
+}
+
+:root:not(.dark) .atmo-cloud-front {
+  opacity: 0.9;
+  top: 44%;
+  bottom: -26%;
+  filter: blur(16px);
+  transform: translate3d(calc(var(--drift-x) * 0.36), calc(var(--drift-y) * 0.26 + var(--scroll-y) * -0.66), 0);
+}
+
+:root:not(.dark) .atmo-horizon-glow {
+  height: 40vh;
+  inset: auto -8% 8% -8%;
+  background:
+    radial-gradient(44% 54% at 58% 100%, rgba(255, 180, 95, 0.74), rgba(255, 201, 144, 0.32) 52%, transparent 74%);
+  filter: blur(26px);
+}
+
+:root:not(.dark) .atmo-landscape {
+  height: 18vh;
+  opacity: 0.36;
+}
+
+:root:not(.dark) .atmo-moon {
+  width: 236px;
+  height: 236px;
+  background: url("/assets/atmo-sun.svg") center / contain no-repeat;
+  mix-blend-mode: normal;
+  filter: drop-shadow(0 0 18px rgba(255, 196, 122, 0.34));
+  opacity: 0.94;
+}
+
+:root:not(.dark) .atmo-tint {
+  background:
+    radial-gradient(110% 90% at 52% 100%, rgba(255, 201, 148, 0.34), transparent 66%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 236, 212, 0.18));
 }
 
 @media (max-width: 768px) {
