@@ -43,7 +43,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-3xl font-bold text-white">Connect</h4>
+            <h4 className="text-3xl font-bold text-white">Social Links</h4>
             <div className="mt-4 flex items-center gap-3">
               <a
                 href="https://github.com/notbraison"

@@ -148,14 +148,21 @@ const About = () => {
     <div className="py-16 px-4 md:px-10 lg:px-16">
       <section className="w-full space-y-8">
         <div className="rounded-2xl p-5 md:p-6 bg-white/80 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700 shadow-[0_12px_30px_rgba(15,23,42,0.08)]">
-          <button
-            type="button"
-            onClick={() => setShowExperience((prev) => !prev)}
-            className="w-full flex flex-wrap items-center justify-between gap-3 text-left"
+          <div
+            className="relative w-full flex items-start justify-between gap-3 text-left cursor-pointer"
+            role="button"
+            tabIndex={0}
             aria-expanded={showExperience}
+            onClick={() => setShowExperience((prev) => !prev)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                setShowExperience((prev) => !prev);
+              }
+            }}
           >
             <div>
-              <h3 className="text-2xl md:text-3xl font-bold text-slate-800 dark:text-slate-100">
+              <h3 className="text-2xl md:text-3xl font-bold neon-loading-text">
                 Experience
               </h3>
               {!showExperience && (
@@ -164,11 +171,30 @@ const About = () => {
                 </p>
               )}
             </div>
-            <span className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-sm font-semibold bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300">
+
+            {showExperience && (
+              <div
+                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <a
+                  href="/assets/Resume.pdf"
+                  download
+                  className="inline-flex items-center gap-2 px-7 py-2.5 rounded-full border-2 border-cyan-500 text-cyan-500 font-medium text-base hover:bg-cyan-500/10 transition-all duration-300"
+                >
+                  <Download size={18} />
+                  <span className="rainbow-flow-text font-semibold">Resume</span>
+                </a>
+              </div>
+            )}
+
+            <span
+              className="relative z-10 shrink-0 inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-sm font-semibold bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300"
+            >
               {showExperience ? "Collapse" : "Expand"}
               {showExperience ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
             </span>
-          </button>
+          </div>
 
           {showExperience && (
             <div className="space-y-6 mt-6">
@@ -225,7 +251,7 @@ const About = () => {
             aria-expanded={showEducation}
           >
             <div>
-              <h3 className="text-2xl md:text-3xl font-bold text-slate-800 dark:text-slate-100">
+              <h3 className="text-2xl md:text-3xl font-bold neon-loading-text">
                 Education
               </h3>
               {!showEducation && (

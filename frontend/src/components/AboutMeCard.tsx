@@ -16,7 +16,7 @@ const AboutMeCard = () => {
           alt="Braison Orina profile"
         />
         <h3 className="about-profile-fullname">Braison Orina</h3>
-        <p className="about-profile-jobtitle">Software Developer</p>
+        <p className="about-profile-jobtitle hover-underline">Software Developer</p>
       </div>
 
       <div className="about-profile-content">

@@ -34,7 +34,6 @@ import {
   Phone,
   MapPin,
   Send,
-  Download,
 } from "lucide-react";
 
 const Contact = () => {
@@ -66,19 +65,19 @@ const Contact = () => {
       name: "GitHub",
       icon: FaGithub,
       url: "https://github.com/notbraison",
-      color: "text-[#181717] hover:text-black",
+      themeClass: "social-hover-github",
     },
     {
       name: "LinkedIn",
       icon: FaLinkedin,
       url: "  https://www.linkedin.com/in/braison-orina-9b5576254/",
-      color: "text-[#0A66C2] hover:text-[#0A66C2]",
+      themeClass: "social-hover-linkedin",
     },
     {
       name: "X",
       icon: FaXTwitter,
       url: "https://x.com/onewhoplaysMC",
-      color: "text-black hover:text-black",
+      themeClass: "social-hover-x",
     },
   ];
 
@@ -161,18 +160,10 @@ const Contact = () => {
                   onClick={() =>
                     window.dispatchEvent(new CustomEvent("about:expand"))
                   }
-                  className="inline-flex items-center justify-center px-8 py-3 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="liquid-morph-btn px-8 py-3 font-semibold text-lg"
                 >
-                  About Me
+                  <span>About Me</span>
                 </Link>
-                <a
-                  href="/assets/Resume.pdf"
-                  download
-                  className="inline-flex items-center gap-2 px-7 py-3 rounded-full border-2 border-cyan-500 text-cyan-500 font-medium text-lg hover:bg-cyan-500/10 transition-all duration-300"
-                >
-                  <Download size={18} />
-                  Resume
-                </a>
               </div>
             </div>
           </motion.div>
@@ -192,6 +183,10 @@ const Contact = () => {
           className="scroll-mt-24 mb-16 w-screen max-w-none left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] relative"
         >
           <About />
+        </section>
+
+        <section id="projects" className="scroll-mt-24">
+          <Projects showExtendedSections={false} />
         </section>
 
         <div id="technologies" className="mb-16 scroll-mt-24">
@@ -222,10 +217,6 @@ const Contact = () => {
         </div>
         </div>
 
-        <section id="projects" className="scroll-mt-24">
-          <Projects showExtendedSections={false} />
-        </section>
-
         <section id="contact" className="scroll-mt-28 md:scroll-mt-24">
           {/* Header */}
           <motion.div
@@ -234,7 +225,7 @@ const Contact = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <h2 className="rainbow-flow-text text-4xl md:text-5xl font-bold mb-6">
               Get In Touch
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
@@ -323,7 +314,7 @@ const Contact = () => {
                     boxShadow: "0 20px 40px rgba(79, 70, 229, 0.3)",
                   }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-full flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="send-message-rainbow w-full flex items-center justify-center gap-2 px-8 py-4 rounded-lg font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
                 >
                   <Send size={20} />
                   Send Message
@@ -400,9 +391,9 @@ const Contact = () => {
                       transition={{ delay: index * 0.1 }}
                       whileHover={{ scale: 1.1, y: -5 }}
                       whileTap={{ scale: 0.9 }}
-                      className={`p-4 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-lg border border-blue-200 dark:border-blue-800 text-gray-600 dark:text-gray-400 ${link.color} transition-all duration-300 hover:shadow-lg`}
+                      className={`social-hover-link contact-social-link ${link.themeClass} transition-all duration-300 hover:shadow-lg`}
                     >
-                      <Icon size={24} />
+                      <Icon size={24} className="social-hover-icon" />
                     </motion.a>
                   );
                 })}

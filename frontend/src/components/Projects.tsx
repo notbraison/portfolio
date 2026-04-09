@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 import {
@@ -24,6 +24,7 @@ interface Project {
   live: string;
   featured: boolean;
   images: string[];
+  accent: [string, string];
 }
 
 interface ProjectsProps {
@@ -71,6 +72,7 @@ Integrated Firebase for authentication and image storage in articles.`,
       live: "https://frontend-production-ec5e.up.railway.app/",
       featured: true,
       images: ["/assets/EABulletin.png"],
+      accent: ["#2563eb", "#f97316"],
     },
     {
       id: 2,
@@ -104,6 +106,7 @@ Cloud & Deployment: Vercel for frontend with a managed backend and secure signed
       live: "https://tes-bay-six.vercel.app/",
       featured: true,
       images: ["/assets/TES.png"],
+      accent: ["#0284c7", "#8b5cf6"],
     },
     {
       id: 3,
@@ -118,6 +121,7 @@ Cloud & Deployment: Vercel for frontend with a managed backend and secure signed
       live: "https://dashboard-demo.com",
       featured: false,
       images: ["/lovable-uploads/ebf4e624-3656-4574-9eb8-a8701fb3fe1a.png"],
+      accent: ["#06b6d4", "#3b82f6"],
     },
     {
       id: 4,
@@ -132,6 +136,7 @@ Cloud & Deployment: Vercel for frontend with a managed backend and secure signed
       live: "https://dashboard-demo.com",
       featured: false,
       images: ["/lovable-uploads/ebf4e624-3656-4574-9eb8-a8701fb3fe1a.png"],
+      accent: ["#0ea5e9", "#a855f7"],
     },
     {
       id: 5,
@@ -146,6 +151,7 @@ Cloud & Deployment: Vercel for frontend with a managed backend and secure signed
       live: "https://dashboard-demo.com",
       featured: false,
       images: ["/lovable-uploads/ebf4e624-3656-4574-9eb8-a8701fb3fe1a.png"],
+      accent: ["#8b5cf6", "#ec4899"],
     },
     {
       id: 6,
@@ -160,6 +166,7 @@ Cloud & Deployment: Vercel for frontend with a managed backend and secure signed
       live: "https://dashboard-demo.com",
       featured: false,
       images: ["/lovable-uploads/ebf4e624-3656-4574-9eb8-a8701fb3fe1a.png"],
+      accent: ["#22c55e", "#06b6d4"],
     },
   ];
 
@@ -203,8 +210,18 @@ Cloud & Deployment: Vercel for frontend with a managed backend and secure signed
     }
   };
 
+  const projectAccentStyle = (project: Project) =>
+    ({
+      "--project-accent-1": project.accent[0],
+      "--project-accent-2": project.accent[1],
+    }) as CSSProperties;
+
   return (
-    <div className="min-h-screen py-20 px-6">
+    <div
+      className={`${
+        showExtendedSections ? "min-h-screen py-20" : "py-8 md:py-10"
+      } px-6`}
+    >
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
@@ -224,7 +241,7 @@ Cloud & Deployment: Vercel for frontend with a managed backend and secure signed
                 aria-label="See all projects"
                 title="See all projects"
               >
-                More
+                <span className="rainbow-flow-text">More</span>
                 <ArrowRight size={18} />
               </Link>
             )}
@@ -252,13 +269,14 @@ Cloud & Deployment: Vercel for frontend with a managed backend and secure signed
                 key={project.id}
                 variants={itemVariants}
                 whileHover={{ y: -10 }}
-                className="group cursor-pointer"
+                className="group cursor-pointer project-glass-shell"
+                style={projectAccentStyle(project)}
                 onClick={() => {
                   setSelectedProject(project);
                   setCurrentImageIndex(0);
                 }}
               >
-                <div className="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-2xl transition-all duration-300">
+                <div className="project-glass-card rounded-xl overflow-hidden shadow-lg border border-gray-200/70 dark:border-slate-700/80 hover:shadow-2xl transition-all duration-300">
                   <div className="relative overflow-hidden">
                     <img
                       src={project.image}
@@ -381,13 +399,14 @@ Cloud & Deployment: Vercel for frontend with a managed backend and secure signed
                     key={project.id}
                     variants={itemVariants}
                     whileHover={{ y: -5 }}
-                    className="group cursor-pointer"
+                    className="group cursor-pointer project-glass-shell project-glass-shell-sm"
+                    style={projectAccentStyle(project)}
                     onClick={() => {
                       setSelectedProject(project);
                       setCurrentImageIndex(0);
                     }}
                   >
-                    <div className="bg-white/30 dark:bg-gray-800/30 backdrop-blur-sm rounded-lg p-6 border border-gray-200 dark:border-gray-700 hover:border-blue-400 dark:hover:border-blue-600 transition-all duration-300">
+                    <div className="project-glass-card rounded-lg p-6 border border-gray-200/70 dark:border-slate-700/80 hover:border-blue-400 dark:hover:border-blue-600 transition-all duration-300">
                       <h4 className="text-lg font-semibold mb-2 text-gray-800 dark:text-gray-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                         {project.title}
                       </h4>
