@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link, useLocation } from "react-router-dom";
 import {
   ExternalLink,
   Github,
@@ -7,6 +8,7 @@ import {
   ChevronLeft,
   ChevronRight,
   Gamepad2,
+  ArrowRight,
 } from "lucide-react";
 
 import { creativeWork } from "../data/portfolio";
@@ -24,9 +26,21 @@ interface Project {
   images: string[];
 }
 
-const Projects = () => {
+interface ProjectsProps {
+  showExtendedSections?: boolean;
+}
+
+const Projects = ({ showExtendedSections = true }: ProjectsProps) => {
+  const location = useLocation();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    if (!location.hash) return;
+    const sectionId = location.hash.replace("#", "");
+    const section = document.getElementById(sectionId);
+    section?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, [location.hash]);
 
   const projects: Project[] = [
     {
@@ -199,9 +213,22 @@ Cloud & Deployment: Vercel for frontend with a managed backend and secure signed
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-            Projects
-          </h2>
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent pb-1">
+              Projects
+            </h2>
+            {!showExtendedSections && (
+              <Link
+                to="/projects"
+                className="inline-flex items-center gap-1 text-cyan-600 font-semibold hover:text-cyan-500 transition-colors"
+                aria-label="See all projects"
+                title="See all projects"
+              >
+                More
+                <ArrowRight size={18} />
+              </Link>
+            )}
+          </div>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
             A showcase of my recent work, featuring interactive web
             applications, 3D experiences, and full-stack solutions.
@@ -210,10 +237,11 @@ Cloud & Deployment: Vercel for frontend with a managed backend and secure signed
 
         {/* Featured Projects */}
         <motion.div
+          id="featured"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="mb-20"
+          className="mb-20 scroll-mt-24"
         >
           <h3 className="text-2xl font-bold mb-8 text-gray-800 dark:text-gray-200">
             Featured Projects
@@ -292,116 +320,121 @@ Cloud & Deployment: Vercel for frontend with a managed backend and secure signed
           </div>
         </motion.div>
 
-        {/* Games (now listed under Projects) */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="mb-20"
-        >
-          <h3 className="text-2xl font-bold mb-8 text-gray-800 dark:text-gray-200">
-            Games
-          </h3>
-          <div className="grid md:grid-cols-2 gap-6">
-            {creativeWork.games.map((game) => (
-              <motion.a
-                key={game.id}
-                href={game.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                variants={itemVariants}
-                whileHover={{ y: -6 }}
-                className="group bg-white/40 dark:bg-gray-800/40 backdrop-blur-sm rounded-lg p-6 border border-gray-200 dark:border-gray-700 hover:border-blue-400 dark:hover:border-blue-600 transition-all duration-300"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300">
-                    <Gamepad2 size={20} />
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                      {game.title}
-                    </h4>
-                    <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">
-                      Play on external site
-                    </p>
-                  </div>
-                  <ExternalLink
-                    size={18}
-                    className="text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors"
-                  />
-                </div>
-              </motion.a>
-            ))}
-          </div>
-        </motion.div>
+        {showExtendedSections && (
+          <>
+            {/* Games (now listed under Projects) */}
+            <motion.div
+              id="games"
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+              className="mb-20 scroll-mt-24"
+            >
+              <h3 className="text-2xl font-bold mb-8 text-gray-800 dark:text-gray-200">
+                Games
+              </h3>
+              <div className="grid md:grid-cols-2 gap-6">
+                {creativeWork.games.map((game) => (
+                  <motion.a
+                    key={game.id}
+                    href={game.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    variants={itemVariants}
+                    whileHover={{ y: -6 }}
+                    className="group bg-white/40 dark:bg-gray-800/40 backdrop-blur-sm rounded-lg p-6 border border-gray-200 dark:border-gray-700 hover:border-blue-400 dark:hover:border-blue-600 transition-all duration-300"
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="p-3 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300">
+                        <Gamepad2 size={20} />
+                      </div>
+                      <div className="flex-1">
+                        <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                          {game.title}
+                        </h4>
+                        <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">
+                          Play on external site
+                        </p>
+                      </div>
+                      <ExternalLink
+                        size={18}
+                        className="text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors"
+                      />
+                    </div>
+                  </motion.a>
+                ))}
+              </div>
+            </motion.div>
 
-        {/* Other Projects */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          <h3 className="text-2xl font-bold mb-8 text-gray-800 dark:text-gray-200">
-            Other Projects
-          </h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {otherProjects.map((project) => (
-              <motion.div
-                key={project.id}
-                variants={itemVariants}
-                whileHover={{ y: -5 }}
-                className="group cursor-pointer"
-                onClick={() => {
-                  setSelectedProject(project);
-                  setCurrentImageIndex(0);
-                }}
-              >
-                <div className="bg-white/30 dark:bg-gray-800/30 backdrop-blur-sm rounded-lg p-6 border border-gray-200 dark:border-gray-700 hover:border-blue-400 dark:hover:border-blue-600 transition-all duration-300">
-                  <h4 className="text-lg font-semibold mb-2 text-gray-800 dark:text-gray-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                    {project.title}
-                  </h4>
-                  <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm leading-relaxed">
-                    {project.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tech.slice(0, 3).map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded text-xs"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="flex gap-3">
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                      onClick={(e) => e.stopPropagation()}
-                      aria-label={`View ${project.title} on GitHub`}
-                      title={`View ${project.title} on GitHub`}
-                    >
-                      <Github size={18} />
-                    </a>
-                    <a
-                      href={project.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                      onClick={(e) => e.stopPropagation()}
-                      aria-label={`Open live demo for ${project.title}`}
-                      title={`Open live demo for ${project.title}`}
-                    >
-                      <ExternalLink size={18} />
-                    </a>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+            {/* Other Projects */}
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+            >
+              <h3 className="text-2xl font-bold mb-8 text-gray-800 dark:text-gray-200">
+                Other Projects
+              </h3>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {otherProjects.map((project) => (
+                  <motion.div
+                    key={project.id}
+                    variants={itemVariants}
+                    whileHover={{ y: -5 }}
+                    className="group cursor-pointer"
+                    onClick={() => {
+                      setSelectedProject(project);
+                      setCurrentImageIndex(0);
+                    }}
+                  >
+                    <div className="bg-white/30 dark:bg-gray-800/30 backdrop-blur-sm rounded-lg p-6 border border-gray-200 dark:border-gray-700 hover:border-blue-400 dark:hover:border-blue-600 transition-all duration-300">
+                      <h4 className="text-lg font-semibold mb-2 text-gray-800 dark:text-gray-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                        {project.title}
+                      </h4>
+                      <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm leading-relaxed">
+                        {project.description}
+                      </p>
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {project.tech.slice(0, 3).map((tech) => (
+                          <span
+                            key={tech}
+                            className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded text-xs"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                      <div className="flex gap-3">
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                          onClick={(e) => e.stopPropagation()}
+                          aria-label={`View ${project.title} on GitHub`}
+                          title={`View ${project.title} on GitHub`}
+                        >
+                          <Github size={18} />
+                        </a>
+                        <a
+                          href={project.live}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                          onClick={(e) => e.stopPropagation()}
+                          aria-label={`Open live demo for ${project.title}`}
+                          title={`Open live demo for ${project.title}`}
+                        >
+                          <ExternalLink size={18} />
+                        </a>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </>
+        )}
       </div>
 
       {/* Project Modal */}

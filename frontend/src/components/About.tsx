@@ -1,11 +1,10 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { useLocation } from "react-router-dom";
 import {
-  ChevronLeft,
-  ChevronRight,
-  Github,
-  Linkedin,
-  Twitter,
+  ChevronDown,
+  ChevronUp,
+  Download,
 } from "lucide-react";
 
 interface TimelineItem {
@@ -20,35 +19,9 @@ interface TimelineItem {
 }
 
 const About = () => {
-  const [activeSlide, setActiveSlide] = useState(0);
-
-  const profileSlides = [
-    {
-      type: "image" as const,
-      src: "/assets/me.jpg",
-      alt: "Braison portrait placeholder 1",
-    },
-    {
-      type: "image" as const,
-      src: "/assets/me.jpg",
-      alt: "Braison portrait placeholder 2",
-    },
-    {
-      type: "content" as const,
-      title: "Braison Orina",
-      bio: "Full-stack developer focused on practical products, clean interfaces, and scalable backend systems.",
-    },
-  ];
-
-  const nextSlide = () => {
-    setActiveSlide((prev) => (prev + 1) % profileSlides.length);
-  };
-
-  const prevSlide = () => {
-    setActiveSlide((prev) =>
-      prev === 0 ? profileSlides.length - 1 : prev - 1
-    );
-  };
+  const location = useLocation();
+  const [showExperience, setShowExperience] = useState(false);
+  const [showEducation, setShowEducation] = useState(false);
 
   const timeline: TimelineItem[] = [
     {
@@ -107,212 +80,217 @@ const About = () => {
     },
   ];
 
-  return (
-    <div className="min-h-screen py-16 px-4 md:px-10 lg:px-16 bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 dark:from-slate-900 dark:via-slate-900 dark:to-blue-950">
-      <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.55 }}
-        className="max-w-6xl mx-auto text-center mb-12"
-      >
-        <h2 className="text-4xl md:text-5xl font-extrabold mb-4 bg-gradient-to-r from-blue-600 via-violet-600 to-fuchsia-500 bg-clip-text text-transparent">
-          About Me
-        </h2>
-        <p className="text-base md:text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
-          Product-minded software developer who enjoys building fast, clean,
-          and scalable applications across web and backend systems.
-        </p>
-      </motion.div>
+  const experienceItems = timeline.filter((item) => item.type === "work");
+  const educationItems = timeline.filter((item) => item.type === "education");
 
-      <section className="max-w-6xl mx-auto mb-14">
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.05 }}
-          className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start bg-white/80 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 md:p-8 shadow-[0_18px_40px_rgba(15,23,42,0.08)]"
-        >
-          <div className="mx-auto w-full max-w-[420px]">
-            <div className="relative aspect-square [perspective:1200px]">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeSlide}
-                  initial={{ opacity: 0, rotateY: 90, scale: 0.95 }}
-                  animate={{ opacity: 1, rotateY: 0, scale: 1 }}
-                  exit={{ opacity: 0, rotateY: -90, scale: 0.95 }}
-                  transition={{ duration: 0.45, ease: "easeInOut" }}
-                  className="absolute inset-0 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 shadow-[0_18px_35px_rgba(15,23,42,0.20)]"
+  const certifications = [
+    {
+      name: "Accenture North America Completion Certificate",
+      file: "/assets/certificates/accenture-north-america-certificate.pdf",
+    },
+    {
+      name: "IBM Data Science 101 Certificate",
+      file: "/assets/certificates/ibm-data-science-101-certificate.pdf",
+    },
+    {
+      name: "MATLAB Onramp Certificate",
+      file: "/assets/certificates/matlab-onramp-certificate.pdf",
+    },
+    {
+      name: "UC-bf9f2bef-e7e0-432e-ba7f-7b54d70ab5b7 Certificate",
+      file: "/assets/certificates/uc-certificate.pdf",
+    },
+  ];
+
+  useEffect(() => {
+    const shouldExpand = location.hash === "#about";
+    if (shouldExpand) {
+      setShowExperience(true);
+      setShowEducation(true);
+    }
+  }, [location.hash]);
+
+  useEffect(() => {
+    const expandAll = () => {
+      setShowExperience(true);
+      setShowEducation(true);
+    };
+
+    window.addEventListener("about:expand", expandAll);
+    return () => window.removeEventListener("about:expand", expandAll);
+  }, []);
+
+  return (
+    <div className="py-16 px-4 md:px-10 lg:px-16 bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 dark:from-slate-900 dark:via-slate-900 dark:to-blue-950">
+      <section className="w-full space-y-8">
+        <div className="rounded-2xl p-5 md:p-6 bg-white/80 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700 shadow-[0_12px_30px_rgba(15,23,42,0.08)]">
+          <button
+            type="button"
+            onClick={() => setShowExperience((prev) => !prev)}
+            className="w-full flex flex-wrap items-center justify-between gap-3 text-left"
+            aria-expanded={showExperience}
+          >
+            <div>
+              <h3 className="text-2xl md:text-3xl font-bold text-slate-800 dark:text-slate-100">
+                Experience
+              </h3>
+              {!showExperience && (
+                <p className="text-sm md:text-base text-slate-600 dark:text-slate-300 mt-1">
+                  {experienceItems.length} roles in full-stack and product-focused development.
+                </p>
+              )}
+            </div>
+            <span className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-sm font-semibold bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300">
+              {showExperience ? "Collapse" : "Expand"}
+              {showExperience ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+            </span>
+          </button>
+
+          {showExperience && (
+            <div className="space-y-6 mt-6">
+              {experienceItems.map((item, idx) => (
+                <motion.article
+                  key={item.year + item.title}
+                  initial={{ opacity: 0, y: 22 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.45, delay: idx * 0.1 }}
+                  className="rounded-2xl p-6 md:p-7 bg-white/85 dark:bg-slate-800/80 border border-blue-100 dark:border-slate-700 shadow-[0_12px_35px_rgba(37,99,235,0.08)]"
                 >
-                  {profileSlides[activeSlide].type === "image" ? (
-                    <img
-                      src={profileSlides[activeSlide].src}
-                      alt={profileSlides[activeSlide].alt}
-                      className="w-full h-full object-cover object-center"
-                    />
-                  ) : (
-                    <div className="w-full h-full bg-violet-600 text-white p-8 flex flex-col justify-center text-center">
-                      <h4 className="text-3xl font-semibold mb-3">
-                        {profileSlides[activeSlide].title}
-                      </h4>
-                      <p className="text-white/90 leading-relaxed mb-6">
-                        {profileSlides[activeSlide].bio}
+                  <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
+                    <span className="inline-flex px-3 py-1 rounded-full text-sm font-semibold bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300">
+                      {item.year}
+                    </span>
+                    <span className="text-base md:text-lg font-semibold text-slate-900 dark:text-slate-100">
+                      {item.title}
+                    </span>
+                  </div>
+
+                  <p className="text-sm md:text-base text-slate-600 dark:text-slate-300 mb-4">
+                    {item.company} &mdash; {item.location}
+                  </p>
+
+                  <ul className="list-disc ml-5 space-y-1 text-slate-700 dark:text-slate-200 mb-4">
+                    {item.description.map((desc, i) => (
+                      <li key={desc + i}>{desc}</li>
+                    ))}
+                  </ul>
+
+                  {item.techStack && (
+                    <div className="flex flex-wrap gap-2 mb-1">
+                      {item.techStack.map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-2.5 py-1 rounded-full text-xs font-medium bg-violet-100 text-violet-700 dark:bg-violet-900/40 dark:text-violet-300"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </motion.article>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <div className="rounded-2xl p-5 md:p-6 bg-white/80 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700 shadow-[0_12px_30px_rgba(15,23,42,0.08)]">
+          <button
+            type="button"
+            onClick={() => setShowEducation((prev) => !prev)}
+            className="w-full flex flex-wrap items-center justify-between gap-3 text-left"
+            aria-expanded={showEducation}
+          >
+            <div>
+              <h3 className="text-2xl md:text-3xl font-bold text-slate-800 dark:text-slate-100">
+                Education
+              </h3>
+              {!showEducation && (
+                <p className="text-sm md:text-base text-slate-600 dark:text-slate-300 mt-1">
+                  {educationItems.length} degree entry and{" "}
+                  {certifications.length} certifications.
+                </p>
+              )}
+            </div>
+            <span className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-sm font-semibold bg-violet-100 text-violet-700 dark:bg-violet-900/40 dark:text-violet-300">
+              {showEducation ? "Collapse" : "Expand"}
+              {showEducation ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+            </span>
+          </button>
+
+          {showEducation && (
+            <div className="space-y-6 mt-6">
+              {educationItems.map((item, idx) => (
+                <motion.article
+                  key={item.year + item.title}
+                  initial={{ opacity: 0, y: 22 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.45, delay: idx * 0.1 }}
+                  className="rounded-2xl p-6 md:p-7 bg-white/85 dark:bg-slate-800/80 border border-blue-100 dark:border-slate-700 shadow-[0_12px_35px_rgba(37,99,235,0.08)]"
+                >
+                  <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
+                    <span className="inline-flex px-3 py-1 rounded-full text-sm font-semibold bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300">
+                      {item.year}
+                    </span>
+                    <span className="text-base md:text-lg font-semibold text-slate-900 dark:text-slate-100">
+                      {item.title}
+                    </span>
+                  </div>
+
+                  <p className="text-sm md:text-base text-slate-600 dark:text-slate-300 mb-4">
+                    {item.company} &mdash; {item.location}
+                  </p>
+
+                  <ul className="list-disc ml-5 space-y-1 text-slate-700 dark:text-slate-200 mb-4">
+                    {item.description.map((desc, i) => (
+                      <li key={desc + i}>{desc}</li>
+                    ))}
+                  </ul>
+
+                  {item.relevantCoursework && (
+                    <div className="mb-1">
+                      <p className="font-semibold text-slate-800 dark:text-slate-100 mb-2">
+                        Relevant Coursework
                       </p>
-                      <div className="flex items-center justify-center gap-3">
-                        <a
-                          href="https://github.com/notbraison"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="w-10 h-10 rounded-full bg-white text-violet-700 inline-flex items-center justify-center"
-                          aria-label="GitHub"
-                        >
-                          <Github size={18} />
-                        </a>
-                        <a
-                          href="https://www.linkedin.com/in/braison-orina-9b5576254/"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="w-10 h-10 rounded-full bg-white text-violet-700 inline-flex items-center justify-center"
-                          aria-label="LinkedIn"
-                        >
-                          <Linkedin size={18} />
-                        </a>
-                        <a
-                          href="https://x.com/onewhoplaysMC"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="w-10 h-10 rounded-full bg-white text-violet-700 inline-flex items-center justify-center"
-                          aria-label="X"
-                        >
-                          <Twitter size={18} />
-                        </a>
+                      <div className="flex flex-wrap gap-2">
+                        {item.relevantCoursework.map((course) => (
+                          <span
+                            key={course}
+                            className="px-2.5 py-1 rounded-full text-xs font-medium bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-200"
+                          >
+                            {course}
+                          </span>
+                        ))}
                       </div>
                     </div>
                   )}
-                </motion.div>
-              </AnimatePresence>
-
-              <button
-                onClick={prevSlide}
-                className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-slate-900/65 text-white inline-flex items-center justify-center hover:bg-slate-900/80 transition-colors"
-                aria-label="Previous slide"
-              >
-                <ChevronLeft size={18} />
-              </button>
-              <button
-                onClick={nextSlide}
-                className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-slate-900/65 text-white inline-flex items-center justify-center hover:bg-slate-900/80 transition-colors"
-                aria-label="Next slide"
-              >
-                <ChevronRight size={18} />
-              </button>
-            </div>
-
-            <div className="mt-4 flex items-center justify-center gap-2">
-              {profileSlides.map((_, index) => (
-                <button
-                  key={`slide-dot-${index}`}
-                  onClick={() => setActiveSlide(index)}
-                  className={`h-2.5 rounded-full transition-all ${
-                    index === activeSlide
-                      ? "w-8 bg-violet-500"
-                      : "w-2.5 bg-slate-300 dark:bg-slate-600"
-                  }`}
-                  aria-label={`Go to slide ${index + 1}`}
-                />
+                </motion.article>
               ))}
-            </div>
-          </div>
 
-          <div>
-            <h3 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900 dark:text-slate-100 leading-tight">
-              I&apos;m Braison, a software developer building practical products
-              for real users.
-            </h3>
-            <p className="text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
-              My work sits at the intersection of product thinking and
-              engineering execution. I enjoy taking ideas from concept to
-              production, with attention to performance, reliability, and user
-              experience.
-            </p>
-            <p className="text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
-              I&apos;ve worked across frontend and backend systems using React,
-              Laravel, TypeScript, and relational databases, often shipping in
-              fast-moving environments where clarity and adaptability matter.
-            </p>
-            <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
-              These days, I focus on creating software that is maintainable for
-              teams and intuitive for users, while still leaving room for bold
-              interface ideas and creative detail.
-            </p>
-          </div>
-        </motion.div>
-      </section>
-
-      <section className="max-w-6xl mx-auto">
-        <h3 className="text-2xl md:text-3xl font-bold mb-6 text-slate-800 dark:text-slate-100">
-          Experience
-        </h3>
-
-        <div className="space-y-6">
-          {timeline.map((item, idx) => (
-            <motion.article
-              key={item.year + item.title}
-              initial={{ opacity: 0, y: 22 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, delay: idx * 0.1 }}
-              className="rounded-2xl p-6 md:p-7 bg-white/85 dark:bg-slate-800/80 border border-blue-100 dark:border-slate-700 shadow-[0_12px_35px_rgba(37,99,235,0.08)]"
-            >
-              <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
-                <span className="inline-flex px-3 py-1 rounded-full text-sm font-semibold bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300">
-                  {item.year}
-                </span>
-                <span className="text-base md:text-lg font-semibold text-slate-900 dark:text-slate-100">
-                  {item.title}
-                </span>
-              </div>
-
-              <p className="text-sm md:text-base text-slate-600 dark:text-slate-300 mb-4">
-                {item.company} &mdash; {item.location}
-              </p>
-
-              <ul className="list-disc ml-5 space-y-1 text-slate-700 dark:text-slate-200 mb-4">
-                {item.description.map((desc, i) => (
-                  <li key={desc + i}>{desc}</li>
-                ))}
-              </ul>
-
-              {item.techStack && (
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {item.techStack.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-2.5 py-1 rounded-full text-xs font-medium bg-violet-100 text-violet-700 dark:bg-violet-900/40 dark:text-violet-300"
+              <div className="rounded-2xl p-6 md:p-7 bg-white/85 dark:bg-slate-800/80 border border-violet-100 dark:border-slate-700 shadow-[0_12px_35px_rgba(124,58,237,0.08)]">
+                <h4 className="text-xl md:text-2xl font-bold mb-3 text-slate-900 dark:text-slate-100">
+                  Certifications
+                </h4>
+                <ul className="space-y-2 text-slate-700 dark:text-slate-200">
+                  {certifications.map((cert) => (
+                    <li
+                      key={cert.name}
+                      className="flex flex-wrap items-center justify-between gap-3 p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/70 dark:bg-slate-900/30"
                     >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              )}
-
-              {item.relevantCoursework && (
-                <div className="mb-4">
-                  <p className="font-semibold text-slate-800 dark:text-slate-100 mb-2">
-                    Relevant Coursework
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {item.relevantCoursework.map((course) => (
-                      <span
-                        key={course}
-                        className="px-2.5 py-1 rounded-full text-xs font-medium bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-200"
+                      <span>{cert.name}</span>
+                      <a
+                        href={cert.file}
+                        download
+                        className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-semibold bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300 hover:bg-blue-200 dark:hover:bg-blue-900/60 transition-colors"
                       >
-                        {course}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-            </motion.article>
-          ))}
+                        <Download size={14} />
+                        Download
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          )}
         </div>
       </section>
     </div>

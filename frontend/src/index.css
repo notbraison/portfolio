@@ -211,8 +211,8 @@ html {
 }
 
 .about-profile-avatar {
-  width: 176px;
-  height: 176px;
+  width: 208px;
+  height: 208px;
   margin: 0 auto 16px;
   border-radius: 50%;
   object-fit: cover;
@@ -290,7 +290,7 @@ html {
   }
 
   .about-profile-avatar {
-    width: 132px;
-    height: 132px;
+    width: 152px;
+    height: 152px;
   }
 }

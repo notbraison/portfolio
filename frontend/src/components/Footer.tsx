@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Github, Linkedin, Twitter } from "lucide-react";
+import { FaGithub, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 
 const currentYear = new Date().getFullYear();
 
@@ -24,7 +24,13 @@ const Footer = () => {
               <Link to="/" className="text-blue-400 hover:text-blue-300 transition-colors">
                 Home
               </Link>
-              <Link to="/about" className="text-blue-400 hover:text-blue-300 transition-colors">
+              <Link
+                to="/#about"
+                onClick={() =>
+                  window.dispatchEvent(new CustomEvent("about:expand"))
+                }
+                className="text-blue-400 hover:text-blue-300 transition-colors"
+              >
                 About
               </Link>
               <Link to="/projects" className="text-blue-400 hover:text-blue-300 transition-colors">
@@ -46,7 +52,7 @@ const Footer = () => {
                 aria-label="GitHub"
                 className="w-12 h-12 rounded-full bg-slate-800/90 border border-slate-700 inline-flex items-center justify-center hover:border-blue-400 hover:text-blue-300 transition-all"
               >
-                <Github size={20} />
+                <FaGithub size={20} color="#ffffff" />
               </a>
               <a
                 href="https://www.linkedin.com/in/braison-orina-9b5576254/"
@@ -55,7 +61,7 @@ const Footer = () => {
                 aria-label="LinkedIn"
                 className="w-12 h-12 rounded-full bg-slate-800/90 border border-slate-700 inline-flex items-center justify-center hover:border-blue-400 hover:text-blue-300 transition-all"
               >
-                <Linkedin size={20} />
+                <FaLinkedin size={20} color="#0A66C2" />
               </a>
               <a
                 href="https://x.com/onewhoplaysMC"
@@ -64,7 +70,7 @@ const Footer = () => {
                 aria-label="X"
                 className="w-12 h-12 rounded-full bg-slate-800/90 border border-slate-700 inline-flex items-center justify-center hover:border-blue-400 hover:text-blue-300 transition-all"
               >
-                <Twitter size={20} />
+                <FaXTwitter size={20} color="#ffffff" />
               </a>
             </div>
           </div>
@@ -75,7 +81,7 @@ const Footer = () => {
             © {currentYear} Braison Orina. All rights reserved.
           </p>
           <p className="text-slate-400">
-            Made with <span className="text-red-500">❤</span> and lots of coffee
+            Made with <span className="text-red-500">React</span> and lots of coffee
           </p>
         </div>
       </div>

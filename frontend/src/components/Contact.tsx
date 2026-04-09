@@ -1,37 +1,40 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import type { IconType } from "react-icons";
+import { FaGithub, FaLinkedin, FaXTwitter } from "react-icons/fa6";
+import {
+  SiAndroidstudio,
+  SiFlask,
+  SiGit,
+  SiGnubash,
+  SiInertia,
+  SiKalilinux,
+  SiLaravel,
+  SiLinux,
+  SiNginx,
+  SiMysql,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiPhp,
+  SiPostgresql,
+  SiPrisma,
+  SiPython,
+  SiReact,
+  SiTailwindcss,
+  SiTypescript,
+  SiUbuntu,
+  SiVuedotjs,
+} from "react-icons/si";
 import AboutMeCard from "./AboutMeCard";
+import About from "./About";
 import Projects from "./Projects";
 import {
   Mail,
   Phone,
   MapPin,
-  Github,
-  Linkedin,
-  Twitter,
   Send,
-  Atom,
-  Braces,
-  Database,
-  Server,
-  Wind,
-  GitBranch,
-  Terminal,
-  Layers,
-  FlaskConical,
-  MonitorSmartphone,
-  Orbit,
-  Flame,
-  Globe,
-  Shield,
-  Rocket,
-  Code2,
-  ToyBrick,
-  Workflow,
-  TerminalSquare,
   Download,
-  FolderOpen,
 } from "lucide-react";
 
 const Contact = () => {
@@ -61,21 +64,21 @@ const Contact = () => {
   const socialLinks = [
     {
       name: "GitHub",
-      icon: Github,
+      icon: FaGithub,
       url: "https://github.com/notbraison",
-      color: "hover:text-gray-900 dark:hover:text-white",
+      color: "text-[#181717] hover:text-black",
     },
     {
       name: "LinkedIn",
-      icon: Linkedin,
+      icon: FaLinkedin,
       url: "  https://www.linkedin.com/in/braison-orina-9b5576254/",
-      color: "hover:text-blue-600",
+      color: "text-[#0A66C2] hover:text-[#0A66C2]",
     },
     {
-      name: "Twitter",
-      icon: Twitter,
+      name: "X",
+      icon: FaXTwitter,
       url: "https://x.com/onewhoplaysMC",
-      color: "hover:text-blue-400",
+      color: "text-black hover:text-black",
     },
   ];
 
@@ -100,32 +103,39 @@ const Contact = () => {
     },
   ];
 
-  const technologies = [
-    { name: "Laravel", icon: Flame, iconColor: "#FF2D20", chipBg: "bg-red-100/90 dark:bg-red-900/30", chipBorder: "border-red-200/80 dark:border-red-700/70", textColor: "text-red-800 dark:text-red-200" },
-    { name: "React", icon: Atom, iconColor: "#61DAFB", chipBg: "bg-cyan-100/90 dark:bg-cyan-900/30", chipBorder: "border-cyan-200/80 dark:border-cyan-700/70", textColor: "text-cyan-900 dark:text-cyan-200" },
-    { name: "Kali Linux", icon: Shield, iconColor: "#5FA2DB", chipBg: "bg-sky-100/90 dark:bg-sky-900/30", chipBorder: "border-sky-200/80 dark:border-sky-700/70", textColor: "text-sky-900 dark:text-sky-200" },
-    { name: "Node.js", icon: Server, iconColor: "#68A063", chipBg: "bg-green-100/90 dark:bg-green-900/30", chipBorder: "border-green-200/80 dark:border-green-700/70", textColor: "text-green-900 dark:text-green-200" },
-    { name: "Tailwind CSS", icon: Wind, iconColor: "#38BDF8", chipBg: "bg-sky-100/90 dark:bg-sky-900/30", chipBorder: "border-sky-200/80 dark:border-sky-700/70", textColor: "text-sky-900 dark:text-sky-200" },
-    { name: "PostgreSQL", icon: Database, iconColor: "#336791", chipBg: "bg-blue-100/90 dark:bg-blue-900/30", chipBorder: "border-blue-200/80 dark:border-blue-700/70", textColor: "text-blue-900 dark:text-blue-200" },
-    { name: "Inertia.js", icon: Orbit, iconColor: "#9553E9", chipBg: "bg-violet-100/90 dark:bg-violet-900/30", chipBorder: "border-violet-200/80 dark:border-violet-700/70", textColor: "text-violet-900 dark:text-violet-200" },
-    { name: "Python", icon: Code2, iconColor: "#3776AB", chipBg: "bg-blue-100/90 dark:bg-blue-900/30", chipBorder: "border-blue-200/80 dark:border-blue-700/70", textColor: "text-blue-900 dark:text-blue-200" },
-    { name: "Ubuntu", icon: Globe, iconColor: "#E95420", chipBg: "bg-orange-100/90 dark:bg-orange-900/30", chipBorder: "border-orange-200/80 dark:border-orange-700/70", textColor: "text-orange-900 dark:text-orange-200" },
-    { name: "TypeScript", icon: Braces, iconColor: "#3178C6", chipBg: "bg-blue-100/90 dark:bg-blue-900/30", chipBorder: "border-blue-200/80 dark:border-blue-700/70", textColor: "text-blue-900 dark:text-blue-200" },
-    { name: "MySQL", icon: Database, iconColor: "#00758F", chipBg: "bg-cyan-100/90 dark:bg-cyan-900/30", chipBorder: "border-cyan-200/80 dark:border-cyan-700/70", textColor: "text-cyan-900 dark:text-cyan-200" },
-    { name: "Next.js", icon: Rocket, iconColor: "#111111", chipBg: "bg-gray-100/90 dark:bg-gray-800/60", chipBorder: "border-gray-300/80 dark:border-gray-600/80", textColor: "text-gray-900 dark:text-gray-100" },
-    { name: "Git", icon: GitBranch, iconColor: "#F05032", chipBg: "bg-orange-100/90 dark:bg-orange-900/30", chipBorder: "border-orange-200/80 dark:border-orange-700/70", textColor: "text-orange-900 dark:text-orange-200" },
-    { name: "PHP", icon: Code2, iconColor: "#777BB4", chipBg: "bg-indigo-100/90 dark:bg-indigo-900/30", chipBorder: "border-indigo-200/80 dark:border-indigo-700/70", textColor: "text-indigo-900 dark:text-indigo-200" },
-    { name: "Android Studio", icon: MonitorSmartphone, iconColor: "#3DDC84", chipBg: "bg-emerald-100/90 dark:bg-emerald-900/30", chipBorder: "border-emerald-200/80 dark:border-emerald-700/70", textColor: "text-emerald-900 dark:text-emerald-200" },
-    { name: "Prisma", icon: Workflow, iconColor: "#2D3748", chipBg: "bg-slate-100/90 dark:bg-slate-800/60", chipBorder: "border-slate-300/80 dark:border-slate-600/80", textColor: "text-slate-900 dark:text-slate-100" },
-    { name: "Linux", icon: TerminalSquare, iconColor: "#FCC624", chipBg: "bg-yellow-100/90 dark:bg-yellow-900/30", chipBorder: "border-yellow-200/80 dark:border-yellow-700/70", textColor: "text-yellow-900 dark:text-yellow-200" },
-    { name: "Vue.js", icon: Layers, iconColor: "#42B883", chipBg: "bg-emerald-100/90 dark:bg-emerald-900/30", chipBorder: "border-emerald-200/80 dark:border-emerald-700/70", textColor: "text-emerald-900 dark:text-emerald-200" },
-    { name: "Flask", icon: FlaskConical, iconColor: "#111111", chipBg: "bg-gray-100/90 dark:bg-gray-800/60", chipBorder: "border-gray-300/80 dark:border-gray-600/80", textColor: "text-gray-900 dark:text-gray-100" },
-    { name: "Bash", icon: Terminal, iconColor: "#4EAA25", chipBg: "bg-green-100/90 dark:bg-green-900/30", chipBorder: "border-green-200/80 dark:border-green-700/70", textColor: "text-green-900 dark:text-green-200" },
-    { name: "OpenLiteSpeed", icon: ToyBrick, iconColor: "#6A5ACD", chipBg: "bg-violet-100/90 dark:bg-violet-900/30", chipBorder: "border-violet-200/80 dark:border-violet-700/70", textColor: "text-violet-900 dark:text-violet-200" },
+  const technologies: {
+    name: string;
+    icon: IconType;
+    iconColor: string;
+    chipBg: string;
+    chipBorder: string;
+    textColor: string;
+  }[] = [
+    { name: "Laravel", icon: SiLaravel, iconColor: "#FF2D20", chipBg: "bg-red-100/90 dark:bg-red-900/30", chipBorder: "border-red-200/80 dark:border-red-700/70", textColor: "text-red-800 dark:text-red-200" },
+    { name: "React", icon: SiReact, iconColor: "#61DAFB", chipBg: "bg-cyan-100/90 dark:bg-cyan-900/30", chipBorder: "border-cyan-200/80 dark:border-cyan-700/70", textColor: "text-cyan-900 dark:text-cyan-200" },
+    { name: "Kali Linux", icon: SiKalilinux, iconColor: "#557C94", chipBg: "bg-sky-100/90 dark:bg-sky-900/30", chipBorder: "border-sky-200/80 dark:border-sky-700/70", textColor: "text-sky-900 dark:text-sky-200" },
+    { name: "Node.js", icon: SiNodedotjs, iconColor: "#5FA04E", chipBg: "bg-green-100/90 dark:bg-green-900/30", chipBorder: "border-green-200/80 dark:border-green-700/70", textColor: "text-green-900 dark:text-green-200" },
+    { name: "Tailwind CSS", icon: SiTailwindcss, iconColor: "#06B6D4", chipBg: "bg-sky-100/90 dark:bg-sky-900/30", chipBorder: "border-sky-200/80 dark:border-sky-700/70", textColor: "text-sky-900 dark:text-sky-200" },
+    { name: "PostgreSQL", icon: SiPostgresql, iconColor: "#4169E1", chipBg: "bg-blue-100/90 dark:bg-blue-900/30", chipBorder: "border-blue-200/80 dark:border-blue-700/70", textColor: "text-blue-900 dark:text-blue-200" },
+    { name: "Inertia.js", icon: SiInertia, iconColor: "#9553E9", chipBg: "bg-violet-100/90 dark:bg-violet-900/30", chipBorder: "border-violet-200/80 dark:border-violet-700/70", textColor: "text-violet-900 dark:text-violet-200" },
+    { name: "Python", icon: SiPython, iconColor: "#3776AB", chipBg: "bg-blue-100/90 dark:bg-blue-900/30", chipBorder: "border-blue-200/80 dark:border-blue-700/70", textColor: "text-blue-900 dark:text-blue-200" },
+    { name: "Ubuntu", icon: SiUbuntu, iconColor: "#E95420", chipBg: "bg-orange-100/90 dark:bg-orange-900/30", chipBorder: "border-orange-200/80 dark:border-orange-700/70", textColor: "text-orange-900 dark:text-orange-200" },
+    { name: "TypeScript", icon: SiTypescript, iconColor: "#3178C6", chipBg: "bg-blue-100/90 dark:bg-blue-900/30", chipBorder: "border-blue-200/80 dark:border-blue-700/70", textColor: "text-blue-900 dark:text-blue-200" },
+    { name: "MySQL", icon: SiMysql, iconColor: "#4479A1", chipBg: "bg-cyan-100/90 dark:bg-cyan-900/30", chipBorder: "border-cyan-200/80 dark:border-cyan-700/70", textColor: "text-cyan-900 dark:text-cyan-200" },
+    { name: "Next.js", icon: SiNextdotjs, iconColor: "#111111", chipBg: "bg-gray-100/90 dark:bg-gray-800/60", chipBorder: "border-gray-300/80 dark:border-gray-600/80", textColor: "text-gray-900 dark:text-gray-100" },
+    { name: "Git", icon: SiGit, iconColor: "#F05032", chipBg: "bg-orange-100/90 dark:bg-orange-900/30", chipBorder: "border-orange-200/80 dark:border-orange-700/70", textColor: "text-orange-900 dark:text-orange-200" },
+    { name: "PHP", icon: SiPhp, iconColor: "#777BB4", chipBg: "bg-indigo-100/90 dark:bg-indigo-900/30", chipBorder: "border-indigo-200/80 dark:border-indigo-700/70", textColor: "text-indigo-900 dark:text-indigo-200" },
+    { name: "Android Studio", icon: SiAndroidstudio, iconColor: "#3DDC84", chipBg: "bg-emerald-100/90 dark:bg-emerald-900/30", chipBorder: "border-emerald-200/80 dark:border-emerald-700/70", textColor: "text-emerald-900 dark:text-emerald-200" },
+    { name: "Prisma", icon: SiPrisma, iconColor: "#2D3748", chipBg: "bg-slate-100/90 dark:bg-slate-800/60", chipBorder: "border-slate-300/80 dark:border-slate-600/80", textColor: "text-slate-900 dark:text-slate-100" },
+    { name: "Linux", icon: SiLinux, iconColor: "#FCC624", chipBg: "bg-yellow-100/90 dark:bg-yellow-900/30", chipBorder: "border-yellow-200/80 dark:border-yellow-700/70", textColor: "text-yellow-900 dark:text-yellow-200" },
+    { name: "Vue.js", icon: SiVuedotjs, iconColor: "#42B883", chipBg: "bg-emerald-100/90 dark:bg-emerald-900/30", chipBorder: "border-emerald-200/80 dark:border-emerald-700/70", textColor: "text-emerald-900 dark:text-emerald-200" },
+    { name: "Flask", icon: SiFlask, iconColor: "#111111", chipBg: "bg-gray-100/90 dark:bg-gray-800/60", chipBorder: "border-gray-300/80 dark:border-gray-600/80", textColor: "text-gray-900 dark:text-gray-100" },
+    { name: "Bash", icon: SiGnubash, iconColor: "#4EAA25", chipBg: "bg-green-100/90 dark:bg-green-900/30", chipBorder: "border-green-200/80 dark:border-green-700/70", textColor: "text-green-900 dark:text-green-200" },
+    { name: "OpenLiteSpeed", icon: SiNginx, iconColor: "#009639", chipBg: "bg-violet-100/90 dark:bg-violet-900/30", chipBorder: "border-violet-200/80 dark:border-violet-700/70", textColor: "text-violet-900 dark:text-violet-200" },
   ];
 
   return (
-    <div className="min-h-screen py-20 px-6">
+    <div className="min-h-screen pt-28 md:pt-20 pb-20 px-6">
       <div className="max-w-6xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-10 items-center mb-16">
           <motion.div
@@ -141,13 +151,16 @@ const Contact = () => {
               BRAISON
             </h2>
             <p className="text-xl text-gray-700 dark:text-gray-300 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-              Creative developer passionate about interactive design, React
-              ecosystems, and 3D visual storytelling.
+              Product-minded software developer who enjoys building fast,
+              clean, and scalable applications across web and backend systems.
             </p>
             <div className="mt-8">
               <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4">
                 <Link
-                  to="/about"
+                  to="/#about"
+                  onClick={() =>
+                    window.dispatchEvent(new CustomEvent("about:expand"))
+                  }
                   className="inline-flex items-center justify-center px-8 py-3 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
                 >
                   About Me
@@ -174,18 +187,18 @@ const Contact = () => {
           </motion.div>
         </div>
 
+        <section
+          id="about"
+          className="scroll-mt-24 mb-16 w-screen max-w-none left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] relative"
+        >
+          <About />
+        </section>
+
         <div className="mb-16">
           <div className="flex flex-wrap items-center justify-center gap-4 mb-7">
-            <h2 className="text-4xl md:text-5xl font-bold text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <h2 className="text-4xl md:text-5xl font-bold text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent pb-1">
               Technologies I Use
             </h2>
-            <Link
-              to="/projects"
-              className="inline-flex items-center gap-2 px-7 py-3 rounded-full border-2 border-cyan-500 text-cyan-500 font-medium text-lg hover:bg-cyan-500/10 transition-all duration-300"
-            >
-              <FolderOpen size={18} />
-              Projects
-            </Link>
           </div>
           <div className="relative overflow-hidden border-y border-blue-200/70 dark:border-blue-800/70 bg-white/50 dark:bg-gray-800/40 backdrop-blur-sm py-8 w-screen max-w-none left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
           <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-background to-transparent z-10" />
@@ -210,24 +223,25 @@ const Contact = () => {
         </div>
 
         <section id="projects" className="scroll-mt-24">
-          <Projects />
+          <Projects showExtendedSections={false} />
         </section>
 
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-            Get In Touch
-          </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            I'm always interested in new opportunities and interesting projects.
-            Let's create something amazing together!
-          </p>
-        </motion.div>
+        <section id="contact" className="scroll-mt-28 md:scroll-mt-24">
+          {/* Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              Get In Touch
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+              I'm always interested in new opportunities and interesting projects.
+              Let's create something amazing together!
+            </p>
+          </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-16">
           {/* Contact Form */}
@@ -415,6 +429,7 @@ const Contact = () => {
             </motion.div>
           </motion.div>
         </div>
+        </section>
       </div>
     </div>
   );

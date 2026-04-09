@@ -6,14 +6,15 @@ const Index = () => {
   const location = useLocation();
 
   useEffect(() => {
-    if (location.hash === "#contact") {
-      const section = document.getElementById("contact");
+    if (location.hash) {
+      const sectionId = location.hash.replace("#", "");
+      const section = document.getElementById(sectionId);
       section?.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   }, [location.hash]);
 
   return (
-    <section id="contact">
+    <section>
       <Contact />
     </section>
   );

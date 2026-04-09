@@ -1,4 +1,10 @@
-import { Github, Instagram, Linkedin, Twitter } from "lucide-react";
+import {
+  FaGithub,
+  FaInstagram,
+  FaLinkedin,
+  FaXTwitter,
+  FaYoutube,
+} from "react-icons/fa6";
 
 const AboutMeCard = () => {
   return (
@@ -30,7 +36,7 @@ const AboutMeCard = () => {
           aria-label="GitHub"
           title="GitHub"
         >
-          <Github size={16} />
+          <FaGithub size={16} color="#181717" />
         </a>
         <a
           href="https://www.linkedin.com/in/braison-orina-9b5576254/"
@@ -39,7 +45,7 @@ const AboutMeCard = () => {
           aria-label="LinkedIn"
           title="LinkedIn"
         >
-          <Linkedin size={16} />
+          <FaLinkedin size={16} color="#0A66C2" />
         </a>
         <a
           href="https://x.com/onewhoplaysMC"
@@ -48,7 +54,7 @@ const AboutMeCard = () => {
           aria-label="Twitter"
           title="Twitter"
         >
-          <Twitter size={16} />
+          <FaXTwitter size={16} color="#000000" />
         </a>
         <a
           href="https://www.instagram.com/"
@@ -57,7 +63,16 @@ const AboutMeCard = () => {
           aria-label="Instagram"
           title="Instagram"
         >
-          <Instagram size={16} />
+          <FaInstagram size={16} color="#E4405F" />
+        </a>
+        <a
+          href="https://www.youtube.com/@braisonorina3922/videos"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="YouTube"
+          title="YouTube"
+        >
+          <FaYoutube size={16} color="#FF0000" />
         </a>
       </div>
     </aside>
