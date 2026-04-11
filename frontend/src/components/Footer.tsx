@@ -50,27 +50,27 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
-                className="w-12 h-12 rounded-full bg-slate-800/90 border border-slate-700 inline-flex items-center justify-center hover:border-blue-400 hover:text-blue-300 transition-all"
+                className="social-hover-link social-hover-github w-12 h-12 rounded-full bg-slate-800/90 border border-slate-700 inline-flex items-center justify-center hover:border-blue-400 transition-all"
               >
-                <FaGithub size={20} color="#ffffff" />
+                <FaGithub size={20} className="social-hover-icon" />
               </a>
               <a
                 href="https://www.linkedin.com/in/braison-orina-9b5576254/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
-                className="w-12 h-12 rounded-full bg-slate-800/90 border border-slate-700 inline-flex items-center justify-center hover:border-blue-400 hover:text-blue-300 transition-all"
+                className="social-hover-link social-hover-linkedin w-12 h-12 rounded-full bg-slate-800/90 border border-slate-700 inline-flex items-center justify-center hover:border-blue-400 transition-all"
               >
-                <FaLinkedin size={20} color="#0A66C2" />
+                <FaLinkedin size={20} className="social-hover-icon" />
               </a>
               <a
                 href="https://x.com/onewhoplaysMC"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="X"
-                className="w-12 h-12 rounded-full bg-slate-800/90 border border-slate-700 inline-flex items-center justify-center hover:border-blue-400 hover:text-blue-300 transition-all"
+                className="social-hover-link social-hover-x w-12 h-12 rounded-full bg-slate-800/90 border border-slate-700 inline-flex items-center justify-center hover:border-blue-400 transition-all"
               >
-                <FaXTwitter size={20} color="#ffffff" />
+                <FaXTwitter size={20} className="social-hover-icon" />
               </a>
             </div>
           </div>

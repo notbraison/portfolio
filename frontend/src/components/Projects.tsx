@@ -94,12 +94,9 @@ Cloud & Deployment: Vercel for frontend with a managed backend and secure signed
         "Radix UI",
         "shadcn/ui",
         "Lucide React",
-        "TanStack React Query",
         "PostgreSQL",
         "SendGrid",
         "Vercel",
-        "PostCSS",
-        "ESLint",
       ],
       image: "/assets/TES.png",
       github: "https://github.com/notbraison/TES",
@@ -110,6 +107,31 @@ Cloud & Deployment: Vercel for frontend with a managed backend and secure signed
     },
     {
       id: 3,
+      title: "consultantsltd",
+      description:
+        "A full-stack public-facing website for consulting platform.",
+      longDescription: `Built a full-stack consulting platform with a public-facing website and secure admin panel. The site highlights 9 core service areas, includes a dynamic news section, contact and quote request workflows, and an AI-powered assistant with direct fallback channels (email/phone/WhatsApp). The admin side supports authenticated content operations, including news/social links management, user management, inquiry tracking, and media uploads. Backend APIs are hardened with CORS controls, rate limiting, JWT auth, and security middleware for production readiness.`,
+      tech: [
+        "Next.js",
+        "Node.js",
+        "TypeScript",
+        "Vite",
+        "Tailwind",
+        "Radix UI",
+        "shadcn/ui",
+        "Vercel",
+        "PostCSS",
+        "Express",
+      ],
+      image: "/assets/consultantsltd.png",
+      github: "https://github.com/notbraison/democonsultantsltd",
+      live: "https://consultantsltd.vercel.app  ",
+      featured: true,
+      images: ["/assets/consultantsltd.png"],
+      accent: ["#c70244", "#f65c5c"],
+    },
+    {
+      id: 4,
       title: "Building Management System",
       description:
         "A full-stack app for property owners to manage buildings, rooms, and bookings, with role-based access, booking validation, and payment integration.",
@@ -124,7 +146,7 @@ Cloud & Deployment: Vercel for frontend with a managed backend and secure signed
       accent: ["#06b6d4", "#3b82f6"],
     },
     {
-      id: 4,
+      id: 5,
       title: "Expensely (Expense Sharing Platform)",
       description:
         "An app for managing shared expenses in groups, with real-time expense splitting and transaction tracking.",
@@ -139,7 +161,7 @@ Cloud & Deployment: Vercel for frontend with a managed backend and secure signed
       accent: ["#0ea5e9", "#a855f7"],
     },
     {
-      id: 5,
+      id: 6,
       title: "AI Chatbot for Pizza Ordering",
       description:
         "An AI-powered chatbot that helps users order pizza via conversational interface, using NLP for intent recognition.",
@@ -153,21 +175,7 @@ Cloud & Deployment: Vercel for frontend with a managed backend and secure signed
       images: ["/lovable-uploads/ebf4e624-3656-4574-9eb8-a8701fb3fe1a.png"],
       accent: ["#8b5cf6", "#ec4899"],
     },
-    {
-      id: 6,
-      title: "Mini Compiler for C to Python",
-      description:
-        "A mini compiler that translates C code into Python, implementing lexical analysis and syntax parsing.",
-      longDescription:
-        "A sophisticated dashboard application that transforms complex datasets into intuitive, interactive visualizations. Features real-time updates, custom chart types, and export capabilities.",
-      tech: ["Python", "Lexers/Parsers", "AST"],
-      image: "/lovable-uploads/ebf4e624-3656-4574-9eb8-a8701fb3fe1a.png",
-      github: "https://github.com/yourusername/dashboard",
-      live: "https://dashboard-demo.com",
-      featured: false,
-      images: ["/lovable-uploads/ebf4e624-3656-4574-9eb8-a8701fb3fe1a.png"],
-      accent: ["#22c55e", "#06b6d4"],
-    },
+   
   ];
 
   const featuredProjects = projects.filter((p) => p.featured);
