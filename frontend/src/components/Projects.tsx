@@ -132,18 +132,33 @@ Cloud & Deployment: Vercel for frontend with a managed backend and secure signed
     },
     {
       id: 4,
-      title: "Building Management System",
+      title: "Food Palace (Restaurant Ordering Site)",
       description:
-        "A full-stack app for property owners to manage buildings, rooms, and bookings, with role-based access, booking validation, and payment integration.",
-      longDescription:
-        "A sophisticated dashboard application that transforms complex datasets into intuitive, interactive visualizations. Features real-time updates, custom chart types, and export capabilities.",
-      tech: ["Laravel", "MySQL", "Vue.js", "Stripe"],
-      image: "/lovable-uploads/ebf4e624-3656-4574-9eb8-a8701fb3fe1a.png",
-      github: "https://github.com/yourusername/dashboard",
-      live: "https://dashboard-demo.com",
-      featured: false,
-      images: ["/lovable-uploads/ebf4e624-3656-4574-9eb8-a8701fb3fe1a.png"],
-      accent: ["#06b6d4", "#3b82f6"],
+        "Built a polished restaurant ordering site with a clean public-facing experience and a light, food-focused brand style.",
+      longDescription: `Built a polished restaurant ordering experience with a responsive landing flow, sticky header, category navigation, and partner delivery strip.
+
+• Searchable menu browser with 5 categories: Pizza, Burgers, Chicken, Sides, Drinks.
+• Dynamic item cards with pricing, descriptions, and image-driven ordering.
+• Floating order CTA and slide-out cart sidebar for quick add-to-cart checkout previews.
+• Contact section with phone, email, location, operating hours, and social links.
+• Lightweight footer with quick links, payment methods, and delivery guarantee details.`,
+      tech: [
+        "Next.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "shadcn/ui",
+        "Radix UI",
+        "PostCSS",
+        "Vercel",
+        "React",
+        "Lucide-react",
+      ],
+      image: "/assets/Screenshot%20from%202026-04-13%2016-03-52.png",
+      github: "https://github.com/notbraison/menu",
+      live: "https://food-palace-menu.vercel.app",
+      featured: true,
+      images: ["/assets/Screenshot%20from%202026-04-13%2016-03-52.png"],
+      accent: ["#dc2626", "#f97316"],
     },
     {
       id: 5,
